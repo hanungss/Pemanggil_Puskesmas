@@ -72,7 +72,19 @@
 <script>
     let allData = [];
 
-    // 1. Ambil data dari server (get_data.php)
+    // Fungsi Utama: Penentu Nama Poli berdasarkan Dokter (Sesuai Logika 2)
+    function getDisplayPoli(item) {
+        if (item.poli && item.poli.includes("K3")) {
+            if (item.dokter === "ENDAH PUJIATININGSIH") {
+                return "K3 - USIA DEWASA & LANSIA BP UTARA";
+            } else if (item.dokter === "MAGHFUR ARROZY") {
+                return "K3 - USIA DEWASA & LANSIA BP SELATAN";
+            }
+        }
+        return item.poli;
+    }
+
+    // 1. Ambil data dari server
     async function updateMonitor() {
         try {
             const response = await fetch('get_data.php');
@@ -93,23 +105,23 @@
         const processedPoliNames = new Set();
         
         data.forEach(item => {
-            // Logika pemisahan K3 sesuai instruksi
-            if (item.poli === "K3 - USIA DEWASA & LANSIA") {
-                if (item.no_antrean.startsWith("DC")) processedPoliNames.add("K3 - USIA DEWASA & LANSIA SELATAN");
-                else if (item.no_antrean.startsWith("DD")) processedPoliNames.add("K3 - USIA DEWASA & LANSIA UTARA");
-                else processedPoliNames.add(item.poli);
-            } else {
-                processedPoliNames.add(item.poli);
-            }
+            // Ambil nama poli yang sudah di-mapping (Utara/Selatan)
+            const poliName = getDisplayPoli(item);
+            if (poliName) processedPoliNames.add(poliName);
         });
         
         const sortedPoli = Array.from(processedPoliNames).sort();
         let options = '<option value="">Semua Poli (Tampilkan Semua)</option>';
+        
         sortedPoli.forEach(poli => {
             const selected = (poli === currentSelection) ? 'selected' : '';
             options += `<option value="${poli}" ${selected}>${poli}</option>`;
         });
-        selectPoli.innerHTML = options;
+        
+        // Hanya update DOM jika jumlah opsi berubah (menghindari flickering)
+        if (selectPoli.innerHTML !== options) {
+            selectPoli.innerHTML = options;
+        }
     }
 
     // 3. Logika Filter Pencarian & Dropdown
@@ -119,15 +131,11 @@
 
         const filtered = allData.filter(item => {
             const matchSearch = item.nama.toLowerCase().includes(searchKeyword) || 
-                               item.no_antrean.toLowerCase().includes(searchKeyword);
+                                item.no_antrean.toLowerCase().includes(searchKeyword);
             
-            let currentItemDisplayPoli = item.poli;
-            if (item.poli === "K3 - USIA DEWASA & LANSIA") {
-                if (item.no_antrean.startsWith("DC")) currentItemDisplayPoli = "K3 - USIA DEWASA & LANSIA SELATAN";
-                else if (item.no_antrean.startsWith("DD")) currentItemDisplayPoli = "K3 - USIA DEWASA & LANSIA UTARA";
-            }
-
+            const currentItemDisplayPoli = getDisplayPoli(item);
             const matchPoli = selectedFilter === "" || currentItemDisplayPoli === selectedFilter;
+            
             return matchSearch && matchPoli;
         });
 
@@ -139,13 +147,7 @@
         let html = '';
         if (dataToDisplay.length > 0) {
             dataToDisplay.forEach((item, index) => {
-                let displayPoli = item.poli;
-                if (item.poli === "K3 - USIA DEWASA & LANSIA") {
-                    if (item.no_antrean.startsWith("DC")) displayPoli = "K3 - USIA DEWASA & LANSIA SELATAN";
-                    else if (item.no_antrean.startsWith("DD")) displayPoli = "K3 - USIA DEWASA & LANSIA UTARA";
-                }
-
-                // Bersihkan nama dari tanda kutip agar tidak merusak fungsi onclick
+                const displayPoli = getDisplayPoli(item);
                 const namaSafe = item.nama.replace(/'/g, "\\'");
 
                 html += `
@@ -175,33 +177,27 @@
 
     // 5. Fitur Suara (Text-to-Speech)
     function panggilSuara(nomor, nama, poli) {
-    // 1. Ubah Nama dan Poli menjadi lowercase agar tidak dieja (menghindari error singkatan)
-    const namaNatural = nama.toLowerCase();
-    const poliNatural = poli.toLowerCase();
+        // Membersihkan nama poli untuk suara (hilangkan simbol jika perlu)
+        const poliNatural = poli.toLowerCase().replace('&', 'dan');
+        const pesan = `Pasien atas nama, ${nama.toLowerCase()}, silahkan menuju, ${poliNatural}`;
 
-    // 2. Buat kalimat yang lebih santai
-    // Kita gunakan jeda koma (,) agar intonasinya naik-turun seperti manusia
-    const pesan = `Pasien atas nama, ${namaNatural}, silahkan menuju, ${poliNatural}`;
+        const utterance = new SpeechSynthesisUtterance(pesan);
+        utterance.lang = 'id-ID'; 
+        utterance.rate = 0.9; 
+        utterance.pitch = 1.0;
 
-    const utara = new SpeechSynthesisUtterance(pesan);
-    
-    // Pengaturan Suara Bahasa Indonesia
-    utara.lang = 'id-ID'; 
-    utara.rate = 1.0;  // Kecepatan sedikit melambat agar jelas
-    utara.pitch = 1.1; // Nada sedikit tinggi agar terdengar ramah
-
-    // Hentikan suara yang sedang berjalan jika operator klik tombol lain
-    window.speechSynthesis.cancel(); 
-    window.speechSynthesis.speak(utara);
-}
+        window.speechSynthesis.cancel(); 
+        window.speechSynthesis.speak(utterance);
+    }
 
     // Event Listeners
     document.getElementById('searchInput').addEventListener('input', applyFilters);
     document.getElementById('filterPoli').addEventListener('change', applyFilters);
 
-    // Update otomatis tiap 5 detik jika tidak sedang mencari
+    // Update otomatis tiap 5 detik
     setInterval(() => {
-        if (document.getElementById('searchInput').value === "" && document.getElementById('filterPoli').value === "") {
+        // Hanya update otomatis jika user tidak sedang mengetik/mencari
+        if (document.activeElement.id !== 'searchInput' && document.getElementById('searchInput').value === "") {
             updateMonitor();
         }
     }, 5000);
