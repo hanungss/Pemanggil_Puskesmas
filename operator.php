@@ -22,7 +22,7 @@
 <body>
 
 <div class="header-panel">
-    <h1 class="fw-bold">MONITOR ANTREAN PASIEN</h1>
+    <h1 class="fw-bold">MONITOR ANTREAN PASIEN KLASTER PUSKESMAS TAMANSARI</h1>
     <h4 id="clock">Memuat waktu...</h4>
 </div>
 
