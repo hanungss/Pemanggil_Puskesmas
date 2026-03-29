@@ -18,6 +18,7 @@ function ambilDataEpuskesmas() {
             listAntrean.push({
                 no_antrean: cols[1]?.innerText.trim() || "-",
                 poli: cols[2]?.innerText.trim() || "-",
+                dokter: cols[4]?.innerText.trim() || "-",
                 nama: cols[9]?.innerText.split('\n')[0].trim() || "-",
                 jam: cols[5]?.innerText.trim() || "-"
             });

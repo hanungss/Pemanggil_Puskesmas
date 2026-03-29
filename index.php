@@ -212,9 +212,15 @@ async function updateMonitor() {
         categories.forEach(cat => grouped[cat] = []);
 
         data.forEach(item => {
+            // Logika baru berdasarkan nama dokter
             if (item.poli.includes("K3")) {
-                if (item.no_antrean.startsWith("DC-")) grouped["K3 - USIA DEWASA & LANSIA BP SELATAN"].push(item);
-                else if (item.no_antrean.startsWith("DD-")) grouped["K3 - USIA DEWASA & LANSIA BP UTARA"].push(item);
+                if (item.dokter === "ENDAH PUJIATININGSIH") {
+                    // MAGHFUR ARROZY masuk ke bagian UTARA
+                    grouped["K3 - USIA DEWASA & LANSIA BP UTARA"].push(item);
+                } else if (item.dokter === "MAGHFUR ARROZY") {
+                    // ENDAH PUJIATININGSIH masuk ke bagian SELATAN
+                    grouped["K3 - USIA DEWASA & LANSIA BP SELATAN"].push(item);
+                }
             } else if (grouped[item.poli]) {
                 grouped[item.poli].push(item);
             }
