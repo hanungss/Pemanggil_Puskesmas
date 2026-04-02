@@ -1,0 +1,23 @@
+[
+    {
+        "no_antrean": "AC-0003",
+        "poli": "KIA - promprev",
+        "dokter": "ASIFATUL CHOIRIYAH",
+        "nama": "TULARNI",
+        "jam": "02-04-2026 08:35:19"
+    },
+    {
+        "no_antrean": "AI-0002",
+        "poli": "LINTAS KLUSTER - INAP UMUM",
+        "dokter": "-",
+        "nama": "AZZAM TANGGUH WICAKSONO",
+        "jam": "02-04-2026 10:15:00"
+    },
+    {
+        "no_antrean": "AH-0002",
+        "poli": "LINTAS KLUSTER - GAWAT DARURAT",
+        "dokter": "-",
+        "nama": "AZZAM TANGGUH WICAKSONO",
+        "jam": "02-04-2026 10:17:09"
+    }
+]

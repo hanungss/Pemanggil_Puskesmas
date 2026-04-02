@@ -32,7 +32,7 @@ function ambilDataEpuskesmas() {
         return;
     }
 
-    fetch('http://localhost/Antrean_Pusk/simpan_antrean.php', {
+    fetch('http://localhost/Pemanggil_Puskesmas/simpan_antrean.php', {
         method: 'POST',
         body: JSON.stringify(listAntrean),
         headers: { 'Content-Type': 'application/json' }

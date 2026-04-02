@@ -11,12 +11,12 @@
 
     <style>
         :root {
-            --bg-dark: #ffffffff;
+            --bg-dark: #0f172a; /* Diubah ke gelap agar teks putih terlihat */
             --card-bg: #1e293b;
-            --accent-blue: #ffffffff;
+            --accent-blue: #38bdf8; /* Diubah ke biru cerah agar kontras dengan bg gelap */
             --accent-green: #22c55e;
             --text-main: #f8fafc;
-            --info-orange: #f97316; /* Define orange accent */
+            --info-orange: #f97316;
         }
 
         /* Full Screen No Scroll */
@@ -26,7 +26,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            overflow: hidden; /* Mengunci layar agar tidak scroll */
+            overflow: hidden;
         }
 
         .main-wrapper {
@@ -45,9 +45,9 @@
             border-radius: 8px;
         }
 
-        /* Ticker Bar (Replacement for Video) */
+        /* Ticker Bar */
         .ticker-bar {
-            background: #fed7aa; /* Pale orange background */
+            background: #fed7aa;
             padding: 8px 15px;
             border-radius: 10px;
             border: 1px solid var(--info-orange);
@@ -68,7 +68,7 @@
         }
 
         .ticker-text {
-            color: #9a3412; /* Darker orange text */
+            color: #9a3412;
             font-weight: 700;
             font-size: 1.1rem;
         }
@@ -81,11 +81,11 @@
             gap: 10px;
         }
 
-        /* Grid System untuk Poli */
+        /* Grid System untuk Poli (3 Kolom x 2 Baris) */
         #display-antrean {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 Kolom */
-            grid-template-rows: repeat(2, 1fr);    /* 2 Baris */
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
             gap: 10px;
             flex-grow: 1;
         }
@@ -186,8 +186,7 @@
             <marquee class="ticker-text">Selamat datang di Puskesmas Tamansari • Mohon menunggu antrian dengan tertib • Silahkan menunggu nama anda dipanggil.</marquee>
         </div>
 
-        <div id="display-antrean">
-            </div>
+        <div id="display-antrean"></div>
     </div>
 </div>
 
@@ -212,17 +211,24 @@ async function updateMonitor() {
         categories.forEach(cat => grouped[cat] = []);
 
         data.forEach(item => {
-            // Logika baru berdasarkan nama dokter
-            if (item.poli.includes("K3")) {
+            let currentPoli = item.poli;
+
+            // Logika Gabung KIA (Apapun yang mengandung kata KIA akan masuk kategori KIA)
+            if (currentPoli.includes("KIA")) {
+                currentPoli = "KIA";
+            }
+
+            // Logika K3 berdasarkan nama dokter
+            if (currentPoli.includes("K3")) {
                 if (item.dokter === "ENDAH PUJIATININGSIH") {
-                    // MAGHFUR ARROZY masuk ke bagian UTARA
                     grouped["K3 - USIA DEWASA & LANSIA BP UTARA"].push(item);
                 } else if (item.dokter === "MAGHFUR ARROZY") {
-                    // ENDAH PUJIATININGSIH masuk ke bagian SELATAN
                     grouped["K3 - USIA DEWASA & LANSIA BP SELATAN"].push(item);
                 }
-            } else if (grouped[item.poli]) {
-                grouped[item.poli].push(item);
+            } 
+            // Masukkan poli lainnya yang sudah didefinisikan di poliIcons
+            else if (grouped[currentPoli]) {
+                grouped[currentPoli].push(item);
             }
         });
 
