@@ -1,52 +1,10 @@
 [
     {
-        "no_antrean": "DD-0014",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "JAETUN",
-        "jam": "06-04-2026 07:45:41"
-    },
-    {
-        "no_antrean": "DD-0022",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "MARSUDIYONO",
-        "jam": "06-04-2026 08:01:50"
-    },
-    {
-        "no_antrean": "AB-0002",
-        "poli": "KIA",
-        "dokter": "AMBAR SETYOWATI",
-        "nama": "SRI SUSANTI",
-        "jam": "06-04-2026 08:13:18"
-    },
-    {
         "no_antrean": "DD-0033",
         "poli": "K3 - USIA DEWASA & LANSIA",
         "dokter": "ENDAH PUJIATININGSIH",
         "nama": "MUHAMMAD ARHAN NAQI ADHWAN",
         "jam": "06-04-2026 08:17:52"
-    },
-    {
-        "no_antrean": "DD-0037",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "HARJONO",
-        "jam": "06-04-2026 08:26:21"
-    },
-    {
-        "no_antrean": "DD-0048",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "SURANTO",
-        "jam": "06-04-2026 08:56:17"
-    },
-    {
-        "no_antrean": "DD-0049",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "ADIT SRI MULYONO",
-        "jam": "06-04-2026 08:56:54"
     },
     {
         "no_antrean": "FB-0005",
@@ -56,31 +14,10 @@
         "jam": "06-04-2026 09:18:40"
     },
     {
-        "no_antrean": "DC-0015",
+        "no_antrean": "DC-0021",
         "poli": "K3 - USIA DEWASA & LANSIA",
         "dokter": "MAGHFUR ARROZY",
-        "nama": "DWI PUTRI DAMAYANTI",
-        "jam": "06-04-2026 11:20:06"
-    },
-    {
-        "no_antrean": "DC-0016",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "WONTEN",
-        "jam": "06-04-2026 11:20:35"
-    },
-    {
-        "no_antrean": "DC-0017",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "YATINI",
-        "jam": "06-04-2026 11:21:18"
-    },
-    {
-        "no_antrean": "DC-0018",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "SUMINEM",
-        "jam": "06-04-2026 11:22:15"
+        "nama": "YONO SUPARTO",
+        "jam": "06-04-2026 12:07:23"
     }
 ]
