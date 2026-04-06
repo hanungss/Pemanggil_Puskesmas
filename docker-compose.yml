@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    image: php:8.1-apache
+    container_name: pemanggil_puskesmas
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    restart: always
