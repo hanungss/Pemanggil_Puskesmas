@@ -7,17 +7,17 @@
         "jam": "06-04-2026 08:17:52"
     },
     {
-        "no_antrean": "FB-0005",
-        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
-        "dokter": "MASTUTI",
-        "nama": "JOKO MULYONO",
-        "jam": "06-04-2026 09:18:40"
+        "no_antrean": "AI-0001",
+        "poli": "LINTAS KLUSTER - INAP UMUM",
+        "dokter": "-",
+        "nama": "AULIA NUR SABRINA SEKAR ZAHRA",
+        "jam": "06-04-2026 14:27:40"
     },
     {
-        "no_antrean": "DC-0021",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "YONO SUPARTO",
-        "jam": "06-04-2026 12:07:23"
+        "no_antrean": "AH-0005",
+        "poli": "LINTAS KLUSTER - GAWAT DARURAT",
+        "dokter": "-",
+        "nama": "SRI MULYANI",
+        "jam": "06-04-2026 16:21:40"
     }
 ]

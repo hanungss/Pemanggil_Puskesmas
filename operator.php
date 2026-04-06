@@ -127,7 +127,7 @@
     <div class="info-alert shadow-sm">
         <h6 class="mb-0 lh-base">
             <i class="fas fa-info-circle text-warning me-2"></i>
-            Memanggil pasien yang <strong class="text-danger">BELUM PERIKSA</strong>. 
+            Memanggil pasien yang <strong class="text-danger">BELUM DIPERIKSA</strong>. 
             Terhubung otomatis dengan <span class="badge bg-light text-dark">EPUSKESMAS</span>
             <span class="d-block mt-2 text-white-50 small fw-light">
                 Selesaikan pemeriksaan di Epus agar data diperbarui secara otomatis.
@@ -163,7 +163,7 @@
                         <th>NO. ANTREAN</th>
                         <th>NAMA PASIEN</th>
                         <th>POLI TUJUAN</th>
-                        <th>JAM</th>
+                        <th>JAM BERKUNJUNG</th>
                         <th>AKSI PANGGILAN</th>
                     </tr>
                 </thead>
