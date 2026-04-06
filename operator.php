@@ -24,6 +24,7 @@
 <div class="header-panel">
     <h1 class="fw-bold">MONITOR ANTREAN PASIEN KLASTER PUSKESMAS TAMANSARI</h1>
     <h4 id="clock">Memuat waktu...</h4>
+    <h5>Aplikasi ini terhubung dengan Epus, pastikan anda menyelesaikan pemeriksaan di Epus agar data diperbarui secara otomatis</h5>
 </div>
 
 <div class="container-fluid px-4">

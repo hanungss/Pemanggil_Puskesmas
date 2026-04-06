@@ -1,0 +1,114 @@
+[
+    {
+        "no_antrean": "DD-0014",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "JAETUN",
+        "jam": "06-04-2026 07:45:41"
+    },
+    {
+        "no_antrean": "DD-0022",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "MARSUDIYONO",
+        "jam": "06-04-2026 08:01:50"
+    },
+    {
+        "no_antrean": "AB-0002",
+        "poli": "KIA",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "SRI SUSANTI",
+        "jam": "06-04-2026 08:13:18"
+    },
+    {
+        "no_antrean": "DD-0033",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "MUHAMMAD ARHAN NAQI ADHWAN",
+        "jam": "06-04-2026 08:17:52"
+    },
+    {
+        "no_antrean": "FB-0002",
+        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
+        "dokter": "MASTUTI",
+        "nama": "KARSINI",
+        "jam": "06-04-2026 08:18:55"
+    },
+    {
+        "no_antrean": "FB-0003",
+        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
+        "dokter": "MASTUTI",
+        "nama": "NGATEMI",
+        "jam": "06-04-2026 08:25:32"
+    },
+    {
+        "no_antrean": "DD-0037",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "HARJONO",
+        "jam": "06-04-2026 08:26:21"
+    },
+    {
+        "no_antrean": "DD-0048",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "SURANTO",
+        "jam": "06-04-2026 08:56:17"
+    },
+    {
+        "no_antrean": "DD-0049",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "ADIT SRI MULYONO",
+        "jam": "06-04-2026 08:56:54"
+    },
+    {
+        "no_antrean": "FB-0004",
+        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
+        "dokter": "MASTUTI",
+        "nama": "RAHMAD AKBAR",
+        "jam": "06-04-2026 08:58:59"
+    },
+    {
+        "no_antrean": "FB-0005",
+        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
+        "dokter": "MASTUTI",
+        "nama": "JOKO MULYONO",
+        "jam": "06-04-2026 09:18:40"
+    },
+    {
+        "no_antrean": "DD-0063",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "PAINI",
+        "jam": "06-04-2026 09:47:05"
+    },
+    {
+        "no_antrean": "FB-0006",
+        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
+        "dokter": "MASTUTI",
+        "nama": "GIBRAN AZRIL RAMADHAN",
+        "jam": "06-04-2026 10:00:35"
+    },
+    {
+        "no_antrean": "DC-0013",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "SRI NGATMI",
+        "jam": "06-04-2026 10:23:11"
+    },
+    {
+        "no_antrean": "AC-0007",
+        "poli": "KIA",
+        "dokter": "ASIFATUL CHOIRIYAH",
+        "nama": "SILVIA CINDY ASTUTY",
+        "jam": "06-04-2026 10:23:34"
+    },
+    {
+        "no_antrean": "AB-0008",
+        "poli": "KIA",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "SEPTIAN TRI PRABOWO",
+        "jam": "06-04-2026 10:26:13"
+    }
+]

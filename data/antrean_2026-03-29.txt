@@ -1,9 +1,0 @@
-[
-    {
-        "no_antrean": "AH-0005",
-        "poli": "LINTAS KLUSTER - GAWAT DARURAT",
-        "dokter": "-",
-        "nama": "MARSELLA DEVIA AZ ZAHRA",
-        "jam": "29-03-2026 10:23:43"
-    }
-]
