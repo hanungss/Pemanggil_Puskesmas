@@ -257,12 +257,18 @@
 const TARGET_POLI = "LABORATORIUM"; 
 
 async function updateMonitor() {
-    try {
-        const response = await fetch('get_data_lab.php');
+try {
+        const response = await fetch('get_data_far.php');
         const data = await response.json();
         
-        const displayItems = filteredData.slice(0, 4); // Ambil 5 teratas
+        // --- PROSES PEMANGGILAN & FILTER DI SINI ---
+        const filteredData = data.filter(item => item.poli === TARGET_POLI);
+        
+        // Gunakan filteredData yang sudah dibuat di atas
+        const displayItems = filteredData.slice(0, 4); 
         const container = document.getElementById('queue-display');
+        
+        // Memanggil TARGET_POLI untuk judul header
         document.getElementById('poli-name').innerText = TARGET_POLI;
         document.getElementById('total-antrean').innerText = `Antrean Tersisa: ${filteredData.length} Pasien`;
 

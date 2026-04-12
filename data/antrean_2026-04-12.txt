@@ -1,37 +1,9 @@
 [
     {
-        "no_antrean": "FB-0001",
-        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
-        "dokter": "MASTUTI",
-        "nama": "JOKO TRI WINARNO",
-        "jam": "09-04-2026 00:00:00"
-    },
-    {
-        "no_antrean": "AI-0002",
-        "poli": "LINTAS KLUSTER - INAP UMUM",
-        "dokter": "-",
-        "nama": "KARTO SUWIRYO PAINEM",
-        "jam": "09-04-2026 10:52:47"
-    },
-    {
-        "no_antrean": "DD-0038",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "NURKASANAH",
-        "jam": "09-04-2026 11:32:33"
-    },
-    {
-        "no_antrean": "DC-0045",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "JOKO",
-        "jam": "09-04-2026 11:38:49"
-    },
-    {
-        "no_antrean": "AH-0004",
+        "no_antrean": "AH-0006",
         "poli": "LINTAS KLUSTER - GAWAT DARURAT",
         "dokter": "-",
-        "nama": "SARJITO",
-        "jam": "09-04-2026 15:51:02"
+        "nama": "WARNO WIYONO",
+        "jam": "12-04-2026 17:06:58"
     }
 ]
