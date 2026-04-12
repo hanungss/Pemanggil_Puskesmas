@@ -23,7 +23,7 @@ function syncLab() {
     });
 
     if (dataKeirim.length > 0) {
-        fetch('http://localhost/Antrean_Pusk/simpan_antrean.php', {
+        fetch('http://localhost/Pemanggil_Puskesmas/simpan_antrean.php', {
             method: 'POST',
             body: JSON.stringify(dataKeirim),
             headers: { 'Content-Type': 'application/json' }

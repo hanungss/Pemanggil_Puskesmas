@@ -176,7 +176,7 @@
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
-                <a href="monitor_lab.php" target="_blank" class="menu-card bg-monitor">
+                <a href="monitor_laboratorium.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-eyedropper"></i></div>
                     <p class="card-title">Laboratorium</p>
                 </a>
