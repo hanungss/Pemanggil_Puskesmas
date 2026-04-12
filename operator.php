@@ -130,7 +130,7 @@
             Memanggil pasien yang <strong class="text-danger">BELUM DIPERIKSA</strong>. 
             Terhubung otomatis dengan <span class="badge bg-light text-dark">EPUSKESMAS</span>
             <span class="d-block mt-2 text-white-50 small fw-light">
-                Selesaikan pemeriksaan di Epus agar data diperbarui secara otomatis.
+                Selesaikan pemeriksaan di Epus agar data diperbarui secara otomatis. Daftar nama pasien akan otomatis hilang ketika pasien sudah diperiksa.
             </span>
         </h6>
     </div>
@@ -233,7 +233,7 @@
                                 <i class="bi bi-megaphone-fill me-2"></i>Panggil
                             </button>
                             <button class="btn-side-call" onclick="panggilSuara('${item.no_antrean}','${namaSafe}','${p}')" title="Ulangi">
-                                <i class="bi bi-arrow-repeat"></i>
+                                <i class="bi bi-arrow-repeat me-2"></i>Ulangi
                             </button>
                         </div>
                     </td>

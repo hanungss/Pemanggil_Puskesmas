@@ -3,368 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor Antrean Modern - Puskesmas Tamansari</title>
-
+    <title>Home - Sistem Antrean Puskesmas Tamansari</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
     <style>
         :root {
-            --bg-body: #f1f5f9;
-            --card-bg: #dae7fd;
-            --accent-blue: #1e293b;
-            --accent-green: #22c55e;
-            --text-main: #1e293b;
-            --info-orange: #f97316;
-            --glass-white: rgba(255, 255, 255, 0.85);
+            --primary-color: #2c3e50;
+            --secondary-color: #2ecc71;
+            --accent-color: #3498db;
+            --bg-light: #f4f7f6;
         }
 
-        body, html {
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding-top: 90px; /* Ruang agar konten tidak tertutup navbar fixed */
+        }
+
+        /* NAVBAR CUSTOM */
+        .navbar {
+            background: rgba(44, 62, 80, 0.96) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .navbar-brand img {
+            width: 35px;
+            margin-right: 10px;
+        }
+
+        /* MENU CARDS */
+        .menu-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: none;
+            border-radius: 15px;
             height: 100%;
-            margin: 0;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
-        }
-
-        .main-wrapper {
-            height: 100vh;
+            text-decoration: none;
             display: flex;
             flex-direction: column;
-            padding: 12px;
-        }
-
-        /* --- NAVBAR MODERN --- */
-        .navbar-custom {
-            background: var(--glass-white);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 10px 25px;
-            margin-bottom: 12px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            padding: 25px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: white;
         }
 
-        .brand-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            color: inherit;
         }
 
-        .logo-puskesmas {
-            height: 50px;
-            width: auto;
-        }
-
-        .brand-text h1 {
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin: 0;
-            color: var(--accent-blue);
-            letter-spacing: -0.5px;
-        }
-
-        .brand-text small {
-            display: block;
-            color: #64748b;
-            font-size: 0.75rem;
-        }
-
-        .social-media-bar {
-            display: flex;
-            gap: 12px;
-            margin-top: 4px;
-        }
-
-        .social-item {
-            font-size: 0.65rem;
-            color: #94a3b8;
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 4px;
-            text-decoration: none;
-            font-weight: 600;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            transition: 0.3s;
         }
 
-        .time-section {
-            background: var(--accent-blue);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 12px;
-            text-align: center;
+        .menu-card:hover .icon-box {
+            transform: scale(1.1);
         }
 
-        #clock {
-            font-size: 1.4rem;
+        /* Grouping Colors */
+        .bg-monitor { background-color: #e8f5e9; color: #2e7d32; }
+        .bg-caller { background-color: #fff3e0; color: #ef6c00; } 
+        
+        .section-title {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            margin-bottom: 30px;
             font-weight: 800;
-            line-height: 1;
-        }
-
-        #date {
-            font-size: 0.65rem;
+            color: var(--primary-color);
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.8;
-            margin-top: 2px;
         }
 
-        /* --- RUNNING TEXT --- */
-        .ticker-bar {
-            background: #fed7aa;
-            padding: 8px 15px;
-            border-radius: 10px;
-            border: 1px solid var(--info-orange);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .ticker-info-badge {
-            background-color: var(--info-orange);
-            color: white;
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-right: 15px;
-        }
-
-        .ticker-text {
-            color: #9a3412;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        /* --- GRID ANTREAN --- */
-        #display-antrean {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 12px;
-            flex-grow: 1;
-        }
-
-        .poli-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .poli-header {
-            background: rgba(56, 189, 248, 0.1);
-            padding: 8px;
-            text-align: center;
-            border-bottom: 2px solid var(--accent-blue);
-        }
-
-        .poli-header span {
-            font-weight: 800;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: var(--accent-blue);
-        }
-
-        .queue-list {
-            flex-grow: 1;
-            padding: 6px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .queue-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-        }
-
-        .queue-number {
-            font-weight: 900;
-            font-size: 1.4rem; /* Disesuaikan agar 3 baris muat */
-            color: var(--accent-green);
-            line-height: 1;
-        }
-
-        .patient-info {
-            text-align: right;
-            max-width: 60%;
-        }
-
-        .patient-name {
+        .card-title {
             font-size: 0.85rem;
             font-weight: 700;
-            color: #1e293b;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-        }
-
-        .patient-time {
-            font-size: 0.65rem;
-            color: #64748b;
-        }
-
-        .total-antrean-footer {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 6px;
             text-align: center;
-            font-weight: 700;
-            font-size: 0.8rem;
-            color: #334155;
-            border-top: 1px dashed rgba(0,0,0,0.1);
+            color: #333;
+            margin: 0;
+            text-transform: uppercase;
         }
 
-        .empty-state {
-            color: #64748b;
-            font-style: italic;
-            font-size: 0.8rem;
-            text-align: center;
-            margin-top: 20px;
+        footer {
+            background: white;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <nav class="navbar-custom">
-        <div class="brand-section">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seal_of_Boyolali_Regency.svg/120px-Seal_of_Boyolali_Regency.svg.png" alt="Logo" class="logo-puskesmas">
-            <img src="https://puskesmastamansari.boyolali.go.id/files/setting/thumb/190_115-1773108375-Logo_Puskesmas_Tanpa_Background.png" alt="Logo" class="logo-puskesmas">
-            <div class="brand-text">
-                <h1>Puskesmas Tamansari Kabupaten Boyolali</h1>
-                <small>
-                    <i class="fas fa-map-marker-alt text-danger me-1"></i> 
-                    Jl. Musuk Karanganyar KM6 Bendosari, Karangkendal, Tamansari, Boyolali, Jawa Tengah
-                </small>
-                <div class="social-media-bar">
-                    <span class="social-item"><i class="fab fa-instagram"></i> @puskesmas_tamansari_</span>
-                    <span class="social-item"><i class="fab fa-whatsapp"></i> 0851-1295-5000</span>
-                    <span class="social-item"><i class="fas fa-globe"></i> puskesmastamansari.boyolali.go.id</span>
-                </div>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="https://puskesmastamansari.boyolali.go.id/files/setting/thumb/190_115-1773108375-Logo_Puskesmas_Tanpa_Background.png" alt="Logo">
+            <div>
+                <span class="fw-bold">Sistem Antrean </span>
+                <small class="d-block text-white-50" style="font-size: 0.65rem;">PUSKESMAS TAMANSARI BOYOLALI</small>
             </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-uppercase small fw-bold">
+                <li class="nav-item"><a class="nav-link px-3" href="#"><i class="bi bi-house-door me-1"></i> Beranda</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="#monitor"><i class="bi bi-display me-1"></i> Monitor</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="#petugas"><i class="bi bi-person-badge me-1"></i> Petugas</a></li>
+                <li class="nav-item ms-lg-3">
+                    <span id="liveClock" class="nav-link text-warning border border-warning rounded-pill px-3">00:00:00</span>
+                </li>
+            </ul>
         </div>
-
-        <div class="time-section">
-            <div id="clock">00.00.00</div>
-            <div id="date">MEMUAT...</div>
-        </div>
-    </nav>
-
-    <div class="content-area d-flex flex-column flex-grow-1">
-        <div class="ticker-bar">
-            <span class="ticker-info-badge">📢 Info</span>
-            <marquee class="ticker-text">Selamat datang di Puskesmas Tamansari • Mohon mengantre dengan tertib • Silakan menunggu nama Anda dipanggil oleh petugas layanan.</marquee>
-        </div>
-
-        <div id="display-antrean">
-            </div>
     </div>
+</nav>
+
+<div class="container mt-4">
+    
+    <section id="monitor" class="mb-5">
+        <h3 class="section-title">Monitor Tampilan TV Antrean Klaster</h3>
+        <div class="row g-4">
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="home.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-grid-3x3-gap-fill"></i></div>
+                    <p class="card-title">TV Besar Semua Klaster</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_gigi.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-person-bounding-box"></i></div>
+                    <p class="card-title">Pelayanan Gigi</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_kia.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-gender-female"></i></div>
+                    <p class="card-title">KIA</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_k3_selatan.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-arrow-down-circle"></i></div>
+                    <p class="card-title">K3 BP dr. MAGHFUR ARROZY</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_k3_utara.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-arrow-up-circle"></i></div>
+                    <p class="card-title">K3 BP dr. ENDAH PUJITIANINGSIH</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_ugd.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-universal-access-circle"></i></div>
+                    <p class="card-title">Gawat Darurat</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_farmasi.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-capsule"></i></div>
+                    <p class="card-title">Farmasi</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_lab.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-eyedropper"></i></div>
+                    <p class="card-title">Laboratorium</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="petugas" class="mb-5">
+        <h3 class="section-title">Panel Pemanggil (Petugas)</h3>
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <a href="operator.php" target="_blank" class="menu-card bg-caller shadow-sm">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-megaphone-fill"></i></div>
+                    <p class="card-title">Pemanggil Ruang Klaster</p>
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a href="panggil_farmasi.php" target="_blank" class="menu-card bg-caller shadow-sm">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-prescription2"></i></div>
+                    <p class="card-title">Pemanggil Farmasi</p>
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a href="panggil_lab.php" target="_blank" class="menu-card bg-caller shadow-sm">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-eyedropper"></i></div>
+                    <p class="card-title">Pemanggil Laboratorium</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
 </div>
 
+<footer class="text-center py-4 text-muted border-top">
+    <div class="container">
+        <small>&copy; 2026 Puskesmas Tamansari - Kabupaten Boyolali</small>
+    </div>
+</footer>
+
 <script>
-const poliIcons = {
-    "LINTAS KLUSTER - PELAYANAN GIGI": "fa-tooth",
-    "KIA": "fa-baby-carriage",
-    "K3 - USIA DEWASA & LANSIA BP SELATAN": "fa-stethoscope",
-    "K3 - USIA DEWASA & LANSIA BP UTARA": "fa-user-md",
-    "LINTAS KLUSTER - GAWAT DARURAT": "fa-ambulance",
-    "FISIOTERAPI": "fa-wheelchair"
-};
-
-async function updateMonitor() {
-    try {
-        const response = await fetch('get_data.php');
-        const data = await response.json();
-        const container = document.getElementById('display-antrean');
-
-        const categories = Object.keys(poliIcons);
-        const grouped = {};
-        categories.forEach(cat => grouped[cat] = []);
-
-        data.forEach(item => {
-            let currentPoli = item.poli;
-            if (currentPoli.includes("KIA")) currentPoli = "KIA";
-
-            if (currentPoli.includes("K3")) {
-                if (item.dokter === "ENDAH PUJIATININGSIH") {
-                    grouped["K3 - USIA DEWASA & LANSIA BP UTARA"].push(item);
-                } else {
-                    grouped["K3 - USIA DEWASA & LANSIA BP SELATAN"].push(item);
-                }
-            } else if (grouped[currentPoli]) {
-                grouped[currentPoli].push(item);
-            }
-        });
-
-        let html = '';
-        categories.forEach(poli => {
-            const icon = poliIcons[poli];
-            const allItems = grouped[poli]; 
-            const displayItems = allItems.slice(0, 3); // TETAP TAMPILKAN 3 PASIEN TERATAS
-            const totalCount = allItems.length;
-
-            let itemsHtml = '';
-            if (displayItems.length > 0) {
-                displayItems.forEach((it, index) => {
-                    itemsHtml += `
-                        <div class="queue-item">
-                            <div class="queue-number">${index + 1}.${it.no_antrean}</div>
-                            <div class="patient-info">
-                                <span class="patient-name text-uppercase">${it.nama}</span>
-                                <span class="patient-time">${it.jam}</span>
-                            </div>
-                        </div>`;
-                });
-            } else {
-                itemsHtml = `<div class="empty-state">tidak ada antrean yang tersedia...</div>`;
-            }
-
-            html += `
-                <div class="poli-card">
-                    <div class="poli-header">
-                        <span><i class="fas ${icon} me-2"></i>${poli}</span>
-                    </div>
-                    <div class="queue-list">
-                        ${itemsHtml}
-                    </div>
-                    <div class="total-antrean-footer">
-                        Total Antrean: ${totalCount} Pasien
-                    </div>
-                </div>`;
-        });
-
-        container.innerHTML = html;
-    } catch (err) {
-        console.error("Fetch error:", err);
+    // Fungsi Jam Digital
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('liveClock').innerText = `${hours}:${minutes}:${seconds}`;
     }
-}
-
-// Clock Logic
-setInterval(() => {
-    const now = new Date();
-    document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID').replace(/:/g, '.');
-    document.getElementById('date').innerText = now.toLocaleDateString('id-ID', { 
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
-    }).toUpperCase();
-}, 1000);
-
-// Update data every 5 seconds
-setInterval(updateMonitor, 5000);
-updateMonitor();
+    setInterval(updateClock, 1000);
+    updateClock(); // Jalankan langsung tanpa tunggu 1 detik
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
