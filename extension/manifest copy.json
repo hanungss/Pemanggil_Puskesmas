@@ -1,21 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Sync Antrean Epuskesmas Puskesmas Tamansari",
-  "version": "1.2",
+  "version": "1.1",
   "permissions": ["tabs"],
   "host_permissions": [
     "https://boyolali.epuskesmas.id/*",
     "http://localhost/*",
-    "http://192.168.1.20/*"
+    "https://tamansariantri.rf.gd/*"
   ],
   "content_scripts": [
     {
       "matches": ["https://boyolali.epuskesmas.id/*"],
-      "js": [
-        "laboratorium.js",
-        "farmasi.js",
-        "content.js"
-      ],
+      "js": ["content.js"],
       "run_at": "document_idle"
     }
   ]

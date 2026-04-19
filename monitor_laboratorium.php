@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor Antrean Split - Puskesmas Tamansari</title>
+    <title>Monitor Antrean Laboratorium - Puskesmas Tamansari</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,9 +11,9 @@
 
     <style>
         :root {
-            --bg-page: #f0f9ff; /* Biru sangat muda */
-            --primary-blue: #0284c7; /* Biru Medis */
-            --soft-blue: #e0f2fe; /* Biru muda lembut */
+            --bg-page: #f0f9ff;
+            --primary-blue: #0284c7;
+            --soft-blue: #e0f2fe;
             --text-dark: #0f172a;
             --accent-green: #10b981;
         }
@@ -46,10 +46,10 @@
             border: 1px solid var(--soft-blue);
         }
 
-        .logo-puskesmas { height: 45px; }
+        .logo-puskesmas { height: 50px; }
 
         .brand-text h1 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--primary-blue);
             margin: 0;
@@ -62,17 +62,16 @@
         }
 
         #clock { 
-            font-size: 1.8rem; 
+            font-size: 2rem; 
             font-weight: 900; 
             color: var(--text-dark);
             line-height: 1;
         }
 
         #date { 
-            font-size: 0.8rem; 
-            font-weight: 600; 
+            font-size: 0.85rem; 
+            font-weight: 700; 
             color: var(--primary-blue);
-            text-transform: uppercase;
         }
 
         /* --- SPLIT LAYOUT --- */
@@ -83,9 +82,8 @@
             height: calc(100vh - 180px);
         }
 
-        /* KIRI: VIDEO */
         .video-section {
-            flex: 1.4; 
+            flex: 1.3; 
             background: #000;
             border-radius: 20px;
             overflow: hidden;
@@ -100,7 +98,6 @@
             border: none;
         }
 
-        /* KANAN: ANTREAN */
         .queue-section {
             flex: 1;
             background: #ffffff;
@@ -115,16 +112,15 @@
         .poli-title-bar {
             background: var(--primary-blue);
             color: white;
-            padding: 18px;
+            padding: 20px;
             text-align: center;
         }
 
         .poli-title-bar h2 {
             margin: 0; 
-            font-size: 1.3rem; 
-            font-weight: 800; 
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            letter-spacing: 1px;
         }
 
         .queue-list {
@@ -132,63 +128,58 @@
             padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            background-image: radial-gradient(var(--soft-blue) 0.5px, transparent 0.5px);
-            background-size: 15px 15px; /* Motif titik halus khas medis */
+            gap: 10px;
+            background-color: #fafafa;
         }
 
         .queue-item {
-    display: flex;
-    align-items: center;
-    padding: 15px; /* Sesuaikan padding agar tidak terlalu sesak */
-    background: #ffffff;
-    border: 1px solid var(--soft-blue);
-    border-radius: 12px;
-    margin-bottom: 8px;
-    min-height: 80px; /* Memberi ruang jika nama ter-enter ke bawah */
-}
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #ffffff;
+            border: 2px solid var(--soft-blue);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
 
-.queue-number {
-    font-size: 1.9rem;
-    font-weight: 900;
-    color: var(--primary-blue);
-    
-    /* KUNCI AGAR GARIS TETAP LURUS */
-    flex: 0 0 120px; /* 0=tidak menyusut, 0=tidak melebar, 120px=lebar tetap */
-    text-align: center;
-    border-right: 3px solid var(--soft-blue);
-    margin-right: 20px;
-    padding-right: 10px;
-}
+        .queue-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            flex: 0 0 110px;
+            text-align: center;
+            border-right: 3px solid var(--soft-blue);
+            margin-right: 15px;
+        }
 
-.patient-info {
-    flex: 1; /* Mengambil sisa ruang yang tersedia */
-    min-width: 0; /* Penting agar text-wrap bekerja di dalam flexbox */
-}
+        .patient-info {
+            flex: 1;
+            padding-left: 10px;
+        }
 
-.patient-name {
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--text-dark);
-    
-    /* KUNCI AGAR NAMA OTOMATIS TER-ENTER */
-    white-space: normal; /* Mengizinkan teks turun ke bawah */
-    word-wrap: break-word; /* Memutus kata yang terlalu panjang */
-    line-height: 1.2;
-    display: block;
-}
+        .patient-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .patient-origin {
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
 
         .total-footer {
             background: var(--soft-blue);
             padding: 15px;
             text-align: center;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--primary-blue);
         }
 
-        /* TICKER */
         .ticker-bar {
             background: #ffffff;
             padding: 10px;
@@ -202,11 +193,10 @@
         .ticker-label {
             background: var(--primary-blue);
             color: white;
-            padding: 2px 12px;
-            border-radius: 6px;
-            font-weight: 800;
+            padding: 4px 15px;
+            border-radius: 8px;
+            font-weight: 900;
             margin-right: 15px;
-            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -218,7 +208,7 @@
             <img src="https://puskesmastamansari.boyolali.go.id/files/setting/thumb/190_115-1773108375-Logo_Puskesmas_Tanpa_Background.png" alt="Logo" class="logo-puskesmas">
             <div class="brand-text">
                 <h1>Puskesmas Tamansari</h1>
-                <p class="m-0 text-muted small fw-bold"><i class="fas fa-map-marker-alt text-danger"></i>Bendosari, Karangkendal, Tamansari, Boyolali</p>
+                <p class="m-0 text-muted fw-bold small"><i class="fas fa-hospital-alt text-success me-1"></i> MONITOR ANTREAN LABORATORIUM</p>
             </div>
         </div>
         <div class="time-section">
@@ -229,48 +219,45 @@
 
     <div class="split-container">
         <div class="video-section">
-            <iframe src="https://www.youtube.com/embed/jkS6glRPD_o?list=PLp4_ZpNRrQxoE1ylrekJSFm5KUG3KajdX&autoplay=1&mute=1&loop=1&playlist=jkS6glRPD_o" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/jkS6glRPD_o?autoplay=1&mute=1&loop=1&playlist=jkS6glRPD_o" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
 
         <div class="queue-section">
             <div class="poli-title-bar">
-                <h2 id="poli-name">MEMUAT UNIT...</h2>
+                <h2 id="poli-name">UNIT LABORATORIUM</h2>
             </div>
             <div class="queue-list" id="queue-display">
                 </div>
             <div class="total-footer" id="total-antrean">
-                Antrean Tersisa: 0 Pasien
+                Menunggu Giliran: 0 Pasien
             </div>
         </div>
     </div>
 
     <div class="ticker-bar">
         <span class="ticker-label">INFO</span>
-        <marquee class="fw-bold text-secondary">
-            Gunakan masker saat berada di area Puskesmas • Jaga jarak aman dan tertib mengantre • Terima kasih telah mempercayakan kesehatan Anda kepada kami.
+        <marquee class="fw-bold text-dark fs-5">
+            Selamat Datang di Unit Laboratorium Puskesmas Tamansari • Harap menunggu nomor antrean Anda dipanggil • Pastikan membawa berkas pemeriksaan yang diperlukan.
         </marquee>
     </div>
 </div>
 
 <script>
-// KONFIGURASI KLASTER: Sesuaikan dengan nama poli di database Anda
-const TARGET_POLI = "LABORATORIUM"; 
-
 async function updateMonitor() {
-try {
-        const response = await fetch('get_data_far.php');
+    try {
+        const response = await fetch('get_data_lab.php');
         const data = await response.json();
         
-        // --- PROSES PEMANGGILAN & FILTER DI SINI ---
-        const filteredData = data.filter(item => item.poli === TARGET_POLI);
+        // --- LOGIKA FILTER: Hanya ambil yang statusnya 'Proses' ---
+        const activeQueue = data.filter(item => item.status === 'Proses');
         
-        // Gunakan filteredData yang sudah dibuat di atas
-        const displayItems = filteredData.slice(0, 4); 
         const container = document.getElementById('queue-display');
-        
-        // Memanggil TARGET_POLI untuk judul header
-        document.getElementById('poli-name').innerText = TARGET_POLI;
-        document.getElementById('total-antrean').innerText = `Antrean Tersisa: ${filteredData.length} Pasien`;
+        document.getElementById('total-antrean').innerText = `Menunggu Giliran: ${activeQueue.length} Pasien`;
+
+        // Ambil 5 antrean terlama (yang harus segera dipanggil)
+        // Karena data dari get_data_lab.php sudah di-reverse (terbaru di atas), 
+        // kita ambil slice terakhir atau sesuaikan urutan panggilannya.
+        const displayItems = activeQueue.slice(-5).reverse(); 
 
         let html = '';
         if (displayItems.length > 0) {
@@ -280,20 +267,26 @@ try {
                         <div class="queue-number">${it.no_antrean}</div>
                         <div class="patient-info">
                             <div class="patient-name">${it.nama}</div>
+                            <div class="patient-origin">Mohon Menunggu...</div>
                         </div>
                     </div>`;
             });
         } else {
-            html = '<div class="text-center mt-5 py-5 opacity-25"><h3>BELUM ADA ANTREAN</h3></div>';
+            html = `
+                <div class="text-center mt-5 py-5 opacity-25">
+                    <i class="fas fa-users-slash fa-5x mb-3"></i>
+                    <h3>ANTREAN KOSONG</h3>
+                </div>`;
         }
         
         container.innerHTML = html;
+        console.log(`✅ [DEBUG] Monitor Luar diperbarui: ${activeQueue.length} pasien menunggu.`);
     } catch (err) {
         console.error("Gagal mengambil data:", err);
     }
 }
 
-// Jam & Tanggal
+// Clock logic
 setInterval(() => {
     const now = new Date();
     document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
@@ -302,7 +295,7 @@ setInterval(() => {
     }).toUpperCase();
 }, 1000);
 
-// Update Otomatis per 5 detik
+// Update tiap 5 detik
 setInterval(updateMonitor, 5000);
 updateMonitor();
 </script>

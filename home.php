@@ -222,7 +222,7 @@
             padding: 6px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 1.2rem;
             color: #334155;
             border-top: 1px dashed rgba(0,0,0,0.1);
         }

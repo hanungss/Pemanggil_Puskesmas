@@ -1,19 +1,13 @@
+// POIN 1: JANGAN DISENGGOL (Running Well)
 function ambilDataEpuskesmas() {
     const table = document.querySelector("table");
-
-    if (!table) {
-        console.log("❌ Tabel belum ditemukan");
-        return;
-    }
+    if (!table) return;
 
     const rows = table.querySelectorAll("tbody tr");
-    console.log("Jumlah row:", rows.length);
-
     const listAntrean = [];
 
     rows.forEach(row => {
         const cols = row.querySelectorAll("td");
-
         if (cols.length >= 10) {
             listAntrean.push({
                 no_antrean: cols[1]?.innerText.trim() || "-",
@@ -25,25 +19,38 @@ function ambilDataEpuskesmas() {
         }
     });
 
-    console.log("Data diambil:", listAntrean);
-
-    if (listAntrean.length === 0) {
-        console.log("⚠️ Tidak ada data dikirim");
-        return;
+    if (listAntrean.length > 0) {
+        fetch('http://localhost/Pemanggil_Puskesmas/simpan_antrean.php', {
+            method: 'POST',
+            body: JSON.stringify(listAntrean),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(res => res.json())
+        .catch(err => console.error('❌ Gagal Poli:', err));
     }
-
-    fetch('http://localhost/Pemanggil_Puskesmas/simpan_antrean.php', {
-        method: 'POST',
-        body: JSON.stringify(listAntrean),
-        headers: { 'Content-Type': 'application/json' }
-    })
-    .then(res => res.json())
-    .then(res => console.log("✅ Server:", res))
-    .catch(err => console.error('❌ Gagal kirim:', err));
 }
 
-// Delay awal biar tabel sempat load
+// ROUTER UTAMA
+const currentUrl = window.location.href;
+
 setTimeout(() => {
-    ambilDataEpuskesmas();
-    setInterval(ambilDataEpuskesmas, 10000);
+    if (currentUrl.includes("/pelayanan")) {
+        console.log("🚀 Sync: Poli Umum");
+        ambilDataEpuskesmas();
+        setInterval(ambilDataEpuskesmas, 10000);
+    } 
+    else if (currentUrl.includes("/laboratorium")) {
+        console.log("🚀 Sync: Lab");
+        if (typeof syncLab === "function") {
+            syncLab();
+            setInterval(syncLab, 10000);
+        }
+    } 
+    else if (currentUrl.includes("/obatpasien")) {
+        console.log("🚀 Sync: Farmasi");
+        if (typeof syncFarmasi === "function") {
+            syncFarmasi();
+            setInterval(syncFarmasi, 10000);
+        }
+    }
 }, 5000);
