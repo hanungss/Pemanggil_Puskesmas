@@ -8,13 +8,14 @@ function ambilDataEpuskesmas() {
 
     rows.forEach(row => {
         const cols = row.querySelectorAll("td");
-        if (cols.length >= 10) {
+        if (cols.length >= 13) { // Disesuaikan minimal 13 kolom untuk umur
             listAntrean.push({
                 no_antrean: cols[1]?.innerText.trim() || "-",
                 poli: cols[2]?.innerText.trim() || "-",
                 dokter: cols[4]?.innerText.trim() || "-",
                 nama: cols[9]?.innerText.split('\n')[0].trim() || "-",
-                jam: cols[5]?.innerText.trim() || "-"
+                jam: cols[5]?.innerText.trim() || "-",
+                umur: cols[12]?.innerText.replace(/[^0-9]/g, '').trim() || "-" // Tambah umur tahun saja
             });
         }
     });

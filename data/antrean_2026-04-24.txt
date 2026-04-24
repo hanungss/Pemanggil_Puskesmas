@@ -1,0 +1,34 @@
+[
+    {
+        "no_antrean": "FA-0006",
+        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
+        "dokter": "MASTUTI",
+        "nama": "DEVI OKTARIZA",
+        "jam": "24-04-2026 09:46:18",
+        "umur": "29"
+    },
+    {
+        "no_antrean": "AA-0004",
+        "poli": "KIA",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "MAHARANI ARSY ANNISA",
+        "jam": "24-04-2026 09:48:17",
+        "umur": "28"
+    },
+    {
+        "no_antrean": "AI-0001",
+        "poli": "LINTAS KLUSTER - INAP UMUM",
+        "dokter": "-",
+        "nama": "WARTO TINOYO",
+        "jam": "24-04-2026 09:52:10",
+        "umur": "87"
+    },
+    {
+        "no_antrean": "AH-0008",
+        "poli": "LINTAS KLUSTER - GAWAT DARURAT",
+        "dokter": "-",
+        "nama": "TOMO WIYONO",
+        "jam": "24-04-2026 11:02:11",
+        "umur": "73"
+    }
+]
