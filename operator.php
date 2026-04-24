@@ -177,12 +177,21 @@
 <script>
     let allData = [];
 
-    // Logika Pemisahan Poli (Utara/Selatan)
+    // Logika Pemisahan Poli & Penyatuan KIA
     function getDisplayPoli(item) {
-        if (item.poli && item.poli.includes("K3")) {
-            if (item.dokter === "ENDAH PUJIATININGSIH") return "K3 - USIA DEWASA & LANSIA BP UTARA";
-            if (item.dokter === "MAGHFUR ARROZY") return "K3 - USIA DEWASA & LANSIA BP SELATAN";
+        if (!item.poli) return "-";
+
+        // 1. Logika Penyatuan KIA & KIA - promprev
+        if (item.poli.includes("KIA")) {
+            return "KIA";
         }
+
+        // 2. Logika Pemisahan K3 (Utara/Selatan)
+        if (item.poli.includes("K3")) {
+            if (item.dokter === "ENDAH PUJIATININGSIH") return "K3 - USIA DEWASA BP UTARA";
+            if (item.dokter === "MAGHFUR ARROZY") return "K3 - USIA LANSIA BP SELATAN";
+        }
+
         return item.poli;
     }
 
@@ -218,7 +227,7 @@
 
         tbody.innerHTML = filtered.map((item, index) => {
             const p = getDisplayPoli(item);
-            const namaSafe = item.nama.replace(/'/g, "\\'"); // Menghindari error tanda petik
+            const namaSafe = item.nama.replace(/'/g, "\\'"); 
 
             return `
                 <tr>
@@ -242,45 +251,35 @@
         }).join('');
     }
 
-    // LOGIKA PEMANGGILAN SUARA (Sesuai Permintaan Anda)
     function panggilSuara(nomor, nama, poli) {
-    // 1. Cek dukungan browser
-    if (!('speechSynthesis' in window)) {
-        console.error("Browser tidak mendukung Text-to-Speech");
-        return;
+        if (!('speechSynthesis' in window)) {
+            console.error("Browser tidak mendukung Text-to-Speech");
+            return;
+        }
+
+        window.speechSynthesis.cancel();
+
+        const poliNatural = poli.toLowerCase()
+            .replace('&', 'dan')
+            .replace('-', ' ')
+            .replace('pelayanan', ''); 
+
+        const pesan = `Pasien atas nama ${nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
+        const utterance = new SpeechSynthesisUtterance(pesan);
+        
+        utterance.lang = 'id-ID'; 
+        utterance.rate = 1.0; 
+        utterance.pitch = 1.0; 
+
+        window.speechSynthesis.speak(utterance);
     }
 
-    // 2. Batalkan panggilan lain yang sedang berjalan (agar tidak tumpang tindih)
-    window.speechSynthesis.cancel();
-
-    // 3. Bersihkan nama poli agar suara lebih natural
-    // Contoh: "KIA" tetap KIA, "K3 - ..." menjadi "K3"
-    const poliNatural = poli.toLowerCase()
-        .replace('&', 'dan')
-        .replace('-', ' ')
-        .replace('pelayanan', ''); // Opsional: menghapus kata pelayanan agar lebih singkat
-
-    // 4. Susun pesan: Langsung Nama dan Poli
-    const pesan = `Pasien atas nama ${nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
-
-    const utterance = new SpeechSynthesisUtterance(pesan);
-    
-    // 5. Pengaturan Suara Indonesia
-    utterance.lang = 'id-ID'; 
-    utterance.rate = 1.0; // Kecepatan bicara (sedikit pelan agar jelas)
-    utterance.pitch = 1.0; // Nada normal
-
-    // 6. Eksekusi Panggilan
-    window.speechSynthesis.speak(utterance);
-    
-    console.log("Memanggil suara:", pesan);
-}
-
-    // Interval Waktu & Data
     setInterval(() => {
         const now = new Date();
-        document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
-        document.getElementById('date-text').innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const clockEl = document.getElementById('clock');
+        const dateEl = document.getElementById('date-text');
+        if(clockEl) clockEl.innerText = now.toLocaleTimeString('id-ID');
+        if(dateEl) dateEl.innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     }, 1000);
 
     document.getElementById('searchInput').addEventListener('input', renderTable);

@@ -154,13 +154,13 @@
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_k3_selatan.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-arrow-down-circle"></i></div>
-                    <p class="card-title">K3 BP dr. MAGHFUR ARROZY</p>
+                    <p class="card-title">K3 BP USIA LANSIA</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_k3_utara.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-arrow-up-circle"></i></div>
-                    <p class="card-title">K3 BP dr. ENDAH PUJITIANINGSIH</p>
+                    <p class="card-title">K3 BP USIA DEWASA</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">

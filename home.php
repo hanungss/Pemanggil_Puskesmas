@@ -278,8 +278,8 @@
 const poliIcons = {
     "LINTAS KLUSTER - PELAYANAN GIGI": "fa-tooth",
     "KIA": "fa-baby-carriage",
-    "K3 - USIA DEWASA & LANSIA BP SELATAN": "fa-stethoscope",
-    "K3 - USIA DEWASA & LANSIA BP UTARA": "fa-user-md",
+    "K3 - USIA LANSIA BP SELATAN": "fa-stethoscope", // Nama baru (55 tahun ke atas)
+    "K3 - USIA DEWASA BP UTARA": "fa-user-md",     // Nama baru (55 tahun ke bawah)
     "LINTAS KLUSTER - GAWAT DARURAT": "fa-ambulance",
     "FISIOTERAPI": "fa-wheelchair"
 };
@@ -299,10 +299,12 @@ async function updateMonitor() {
             if (currentPoli.includes("KIA")) currentPoli = "KIA";
 
             if (currentPoli.includes("K3")) {
-                if (item.dokter === "ENDAH PUJIATININGSIH") {
-                    grouped["K3 - USIA DEWASA & LANSIA BP UTARA"].push(item);
+                // LOGIKA PEMISAH BERDASARKAN UMUR & NAMA BARU
+                const umur = parseInt(item.umur) || 0;
+                if (umur > 55) {
+                    grouped["K3 - USIA LANSIA BP SELATAN"].push(item);
                 } else {
-                    grouped["K3 - USIA DEWASA & LANSIA BP SELATAN"].push(item);
+                    grouped["K3 - USIA DEWASA BP UTARA"].push(item);
                 }
             } else if (grouped[currentPoli]) {
                 grouped[currentPoli].push(item);
