@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         :root {
             --dark-bg: #2c3e50;
@@ -176,22 +177,15 @@
 
 <script>
     let allData = [];
+    let calledStatus = {};
 
-    // Logika Pemisahan Poli & Penyatuan KIA
     function getDisplayPoli(item) {
         if (!item.poli) return "-";
-
-        // 1. Logika Penyatuan KIA & KIA - promprev
-        if (item.poli.includes("KIA")) {
-            return "KIA";
-        }
-
-        // 2. Logika Pemisahan K3 (Utara/Selatan)
+        if (item.poli.includes("KIA")) return "KIA";
         if (item.poli.includes("K3")) {
             if (item.dokter === "ENDAH PUJIATININGSIH") return "K3 - USIA DEWASA BP UTARA";
             if (item.dokter === "MAGHFUR ARROZY") return "K3 - USIA LANSIA BP SELATAN";
         }
-
         return item.poli;
     }
 
@@ -201,17 +195,16 @@
             const data = await response.json();
             allData = data;
             
-            // Update Opsi Filter
             const selectPoli = document.getElementById('filterPoli');
             const currentSelection = selectPoli.value;
             const polis = [...new Set(data.map(item => getDisplayPoli(item)))].sort();
             
-            let options = '<option value="">Semua Poli (Tampilkan Semua)</option>';
+            let options = '<option value="">Semua Poli</option>';
             polis.forEach(p => options += `<option value="${p}" ${p === currentSelection ? 'selected' : ''}>${p}</option>`);
-            if (selectPoli.innerHTML !== options) selectPoli.innerHTML = options;
+            selectPoli.innerHTML = options;
 
             renderTable();
-        } catch (e) { console.error("Gagal mengambil data:", e); }
+        } catch (e) { console.error("Gagal fetch:", e); }
     }
 
     function renderTable() {
@@ -228,21 +221,30 @@
         tbody.innerHTML = filtered.map((item, index) => {
             const p = getDisplayPoli(item);
             const namaSafe = item.nama.replace(/'/g, "\\'"); 
+            const isCalled = calledStatus[item.no_antrean] === true;
+            const callText = isCalled ? "Sudah Dipanggil" : "Panggil";
+            const callIcon = isCalled ? "bi-check-circle-fill" : "bi-megaphone-fill";
+            
+            // Menampilkan umur, jika kosong tampilkan tanda strip
+            const displayUmur = item.umur && item.umur !== "-" ? item.umur + " Thn" : "-";
 
             return `
                 <tr>
                     <td class="text-center fw-bold text-muted">${index + 1}</td>
                     <td class="text-center"><span class="badge badge-number">${item.no_antrean}</span></td>
-                    <td class="patient-name-col text-uppercase">${index + 1}. ${item.nama}</td>
-                    <td class="text-danger fw-bold"><i class="bi bi-geo-alt-fill me-2"></i>${p}</td>
+                    <td class="patient-name-col text-uppercase">
+                        ${item.nama}
+                        <div class="small text-muted fw-normal" style="font-size: 0.75rem;">Umur: ${displayUmur}</div>
+                    </td>
+                    <td class="text-danger fw-bold">${p}</td>
                     <td class="text-center text-muted small fw-bold">${item.jam}</td>
                     <td class="text-center">
                         <div class="btn-call-group d-inline-flex">
-                            <button class="btn-main-call" onclick="panggilSuara('${item.no_antrean}','${namaSafe}','${p}')">
-                                <i class="bi bi-megaphone-fill me-2"></i>Panggil
+                            <button class="btn-main-call" onclick="triggerPanggilan('${item.no_antrean}','${namaSafe}','${p}')">
+                                <i class="bi ${callIcon} me-2"></i>${callText}
                             </button>
-                            <button class="btn-side-call" onclick="panggilSuara('${item.no_antrean}','${namaSafe}','${p}')" title="Ulangi">
-                                <i class="bi bi-arrow-repeat me-2"></i>Ulangi
+                            <button class="btn-side-call" onclick="triggerPanggilan('${item.no_antrean}','${namaSafe}','${p}')" title="Ulangi">
+                                <i class="bi bi-arrow-repeat"></i>
                             </button>
                         </div>
                     </td>
@@ -251,35 +253,44 @@
         }).join('');
     }
 
-    function panggilSuara(nomor, nama, poli) {
-        if (!('speechSynthesis' in window)) {
-            console.error("Browser tidak mendukung Text-to-Speech");
-            return;
+function triggerPanggilan(nomor, nama, poli) {
+    // 1. Tandai status di tampilan agar user tahu tombol sudah diklik
+    calledStatus[nomor] = true;
+    renderTable();
+
+    console.log("Mencoba memanggil:", nomor, nama, poli); // Debug di console browser (F12)
+
+    // 2. Kirim data menggunakan AJAX
+    $.ajax({
+        url: 'panggil_aksi.php',
+        type: 'POST',
+        // Gunakan format objek langsung untuk data POST
+        data: {
+            no_antrean: nomor,
+            nama: nama,
+            poli: poli
+        },
+        dataType: 'json', // Kita berharap balasan berupa JSON
+        success: function(response) {
+            console.log("Respon dari Server:", response);
+            if(response.status === 'success') {
+                console.log("Sinyal berhasil dikirim ke Pusher!");
+            } else {
+                alert("Gagal: " + response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Koneksi Error:", status, error);
+            console.log("Isi Respon Error:", xhr.responseText);
+            alert("Terjadi kesalahan koneksi ke file panggil_aksi.php");
         }
-
-        window.speechSynthesis.cancel();
-
-        const poliNatural = poli.toLowerCase()
-            .replace('&', 'dan')
-            .replace('-', ' ')
-            .replace('pelayanan', ''); 
-
-        const pesan = `Pasien atas nama ${nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
-        const utterance = new SpeechSynthesisUtterance(pesan);
-        
-        utterance.lang = 'id-ID'; 
-        utterance.rate = 1.0; 
-        utterance.pitch = 1.0; 
-
-        window.speechSynthesis.speak(utterance);
-    }
+    });
+}
 
     setInterval(() => {
         const now = new Date();
-        const clockEl = document.getElementById('clock');
-        const dateEl = document.getElementById('date-text');
-        if(clockEl) clockEl.innerText = now.toLocaleTimeString('id-ID');
-        if(dateEl) dateEl.innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
+        document.getElementById('date-text').innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     }, 1000);
 
     document.getElementById('searchInput').addEventListener('input', renderTable);
