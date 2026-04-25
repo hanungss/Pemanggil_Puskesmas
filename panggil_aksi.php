@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 
 // 1. KREDENSIAL PUSHER (Berdasarkan url_debug terbaru Anda)
 $app_id  = "2146310"; 
-$key     = "8b7f969aee7f1ab6ea03"; 
-$secret  = "0437e5df64a8e6215853"; // <-- PASTIKAN SECRET INI PASANGAN DARI KEY DI ATAS
+$key     = "8b7f969aee7f1ab6ea06"; 
+$secret  = "0437e5df64a8e621585d"; // <-- PASTIKAN SECRET INI PASANGAN DARI KEY DI ATAS
 $cluster = "ap1";
 
 // 2. TANGKAP DATA DARI OPERATOR

@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
     <style>
         :root {
@@ -31,6 +32,22 @@
             display: flex;
             flex-direction: column;
             padding: 15px;
+        }
+
+        /* --- STYLE UNTUK AKTIVASI SPEAKER (MODAL AWAL) --- */
+        #speaker-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(30, 41, 59, 0.98);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999; color: white;
+        }
+        .btn-activate {
+            background: var(--accent-green); color: white; border: none;
+            padding: 20px 40px; border-radius: 50px; font-size: 1.5rem;
+            font-weight: 800; cursor: pointer; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.4);
+            display: flex; align-items: center; gap: 15px;
         }
 
         /* --- HEADER --- */
@@ -212,6 +229,15 @@
 </head>
 <body>
 
+<div id="speaker-overlay">
+    <i class="fas fa-volume-up fa-4x mb-4 text-success"></i>
+    <h2 class="mb-4">SISTEM SUARA ANTREAN</h2>
+    <p class="mb-4 opacity-75">Klik tombol di bawah agar PC Server dapat mengeluarkan suara panggilan</p>
+    <button class="btn-activate" onclick="activateSpeaker()">
+        <i class="fas fa-power-off"></i> AKTIFKAN SPEAKER
+    </button>
+</div>
+
 <div class="main-wrapper">
     <nav class="navbar-custom">
         <div class="d-flex align-items-center gap-3">
@@ -253,6 +279,18 @@
 </div>
 
 <script>
+
+let isSpeakerActive = false;
+
+// Fungsi untuk mengaktifkan speaker
+function activateSpeaker() {
+    const msg = new SpeechSynthesisUtterance("Sistem suara antrean telah aktif");
+    msg.lang = 'id-ID';
+    window.speechSynthesis.speak(msg);
+    
+    document.getElementById('speaker-overlay').style.display = 'none';
+    isSpeakerActive = true;
+}
 // KONFIGURASI KLASTER: Sesuaikan dengan nama poli di database Anda
 const TARGET_POLI = "K3 - USIA DEWASA & LANSIA BP UTARA"; 
 
@@ -310,6 +348,38 @@ setInterval(() => {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' 
     }).toUpperCase();
 }, 1000);
+
+
+// --- LOGIKA PUSHER LISTENER ---
+const pusher = new Pusher('8b7f969aee7f1ab6ea06', {
+    cluster: 'ap1'
+});
+
+const channel = pusher.subscribe('antrean-channel');
+
+channel.bind('panggil-event', function(data) {
+    if (isSpeakerActive) {
+        // Hentikan suara yang sedang berjalan agar tidak tumpang tindih
+        window.speechSynthesis.cancel();
+
+        // Normalisasi nama poli agar enak didengar (seperti logika di tombol manual)
+        const poliNatural = data.poli.toLowerCase()
+            .replace('&', 'dan')
+            .replace('-', ' ')
+            .replace('pelayanan', '');
+
+        // FORMAT PESAN SESUAI PERMINTAAN
+        const pesan = `Pasien atas nama ${data.nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
+        
+        const utterance = new SpeechSynthesisUtterance(pesan);
+        
+        utterance.lang = 'id-ID'; 
+        utterance.rate = 1.0; 
+        utterance.pitch = 1.0; 
+
+        window.speechSynthesis.speak(utterance);
+    }
+});
 
 // Update Otomatis per 5 detik
 setInterval(updateMonitor, 5000);
