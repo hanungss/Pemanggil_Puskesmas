@@ -74,11 +74,17 @@ setTimeout(() => {
         setInterval(ambilDataEpuskesmas, 10000); 
     } 
     else if (currentUrl.includes("/laboratorium")) {
-        console.log("🚀 Menjalankan Sinkronisasi Otomatis (Lab)...");
-        // Tambahkan fungsi lab di sini jika ada
+        console.log("🚀 Sync: Lab");
+        if (typeof syncLab === "function") {
+            syncLab();
+            setInterval(syncLab, 10000);
+        }
     } 
     else if (currentUrl.includes("/obatpasien")) {
-        console.log("🚀 Menjalankan Sinkronisasi Otomatis (Farmasi)...");
-        // Tambahkan fungsi farmasi di sini jika ada
+        console.log("🚀 Sync: Farmasi");
+        if (typeof syncFarmasi === "function") {
+            syncFarmasi();
+            setInterval(syncFarmasi, 10000);
+        }
     }
 }, 5000);
