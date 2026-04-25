@@ -142,43 +142,55 @@
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_gigi.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-person-bounding-box"></i></div>
-                    <p class="card-title">Pelayanan Gigi</p>
+                    <p class="card-title">TV Pelayanan Gigi</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_kia.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-gender-female"></i></div>
-                    <p class="card-title">KIA</p>
+                    <p class="card-title">TV KIA</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_k3_selatan.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-arrow-down-circle"></i></div>
-                    <p class="card-title">K3 BP USIA LANSIA</p>
+                    <p class="card-title">TV K3 BP USIA LANSIA</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_k3_utara.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-arrow-up-circle"></i></div>
-                    <p class="card-title">K3 BP USIA DEWASA</p>
+                    <p class="card-title">TV K3 BP USIA DEWASA</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_ugd.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-universal-access-circle"></i></div>
-                    <p class="card-title">Gawat Darurat</p>
+                    <p class="card-title">TV Gawat Darurat</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_farmasi.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-capsule"></i></div>
-                    <p class="card-title">Farmasi</p>
+                    <p class="card-title">TV Farmasi</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_laboratorium.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-eyedropper"></i></div>
-                    <p class="card-title">Laboratorium</p>
+                    <p class="card-title">TV Laboratorium</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_utara.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-sign-turn-left-fill"></i></div>
+                    <p class="card-title">TV Ruang Utara (BP DEWASA, BP LANSIA + GIGI)</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_selatan.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-sign-turn-right-fill"></i></div>
+                    <p class="card-title">TV Ruang Selatan (KIA + LAB)</p>
                 </a>
             </div>
         </div>
@@ -190,7 +202,7 @@
             <div class="col-12 col-md-4">
                 <a href="operator.php" target="_blank" class="menu-card bg-caller shadow-sm">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-megaphone-fill"></i></div>
-                    <p class="card-title">Pemanggil Ruang Klaster</p>
+                    <p class="card-title">Pemanggil Ruang Periksa</p>
                 </a>
             </div>
             <div class="col-12 col-md-4">
