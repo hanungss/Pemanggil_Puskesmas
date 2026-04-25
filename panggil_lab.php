@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <style>
         :root {
@@ -139,13 +140,15 @@
 
 <script>
     let allData = [];
+    let calledStatus = {}; // Menyimpan status tombol yang sudah diklik
 
     async function fetchData() {
         console.log("🔄 [LOG] Menyinkronkan data dari server...");
         try {
-            // Mengambil data dari get_data_lab.php yang membaca file TXT
+            // Mengambil data dari get_data_lab.php
             const response = await fetch('get_data_lab.php');
             allData = await response.json();
+            console.log("📊 [LOG] Data diterima:", allData.length);
             renderTable();
         } catch (e) { 
             console.error("❌ [LOG] Gagal sinkronisasi data:", e); 
@@ -172,12 +175,23 @@
             const isSelesai = item.status === 'Selesai';
             const rowClass = isSelesai ? 'status-selesai' : 'status-proses';
             const namaSafe = item.nama.replace(/'/g, "\\'");
+            
+            // Logika penanda tombol Pusher
+            const isCalled = calledStatus[item.no_antrean] === true;
+            const callText = isCalled ? "Sudah Dipanggil" : "Panggil";
+            const callIcon = isCalled ? "bi-check-circle-fill" : "bi-megaphone-fill";
+            
+            // Format umur
+            const displayUmur = item.umur && item.umur !== "-" ? item.umur + " Thn" : "-";
 
             return `
                 <tr class="${rowClass}">
                     <td class="text-center fw-bold text-muted">${index + 1}</td>
                     <td class="text-center"><span class="badge badge-number">${item.no_antrean}</span></td>
-                    <td class="fw-bold text-uppercase">${item.nama}</td>
+                    <td class="fw-bold text-uppercase">
+                        ${item.nama}
+                        <div class="small text-muted fw-normal" style="font-size: 0.75rem;">Umur: ${displayUmur}</div>
+                    </td>
                     <td><i class="bi bi-arrow-right-short text-primary"></i> ${item.ruangan_asal}</td>
                     <td class="text-center">
                         <span class="badge ${isSelesai ? 'bg-success' : 'bg-warning text-dark'}">
@@ -186,10 +200,10 @@
                     </td>
                     <td class="text-center">
                         <div class="btn-call-group d-inline-flex">
-                            <button class="btn-main-call" onclick="panggilSuara('${item.no_antrean}','${namaSafe}')">
-                                <i class="bi bi-megaphone-fill me-1"></i> Panggil
+                            <button class="btn-main-call" onclick="triggerPanggilan('${item.no_antrean}','${namaSafe}','LABORATORIUM')">
+                                <i class="bi ${callIcon} me-1"></i> ${callText}
                             </button>
-                            <button class="btn-side-call" onclick="panggilSuara('${item.no_antrean}','${namaSafe}')" title="Ulangi">
+                            <button class="btn-side-call" onclick="triggerPanggilan('${item.no_antrean}','${namaSafe}','LABORATORIUM')" title="Ulangi">
                                 <i class="bi bi-arrow-repeat"></i>
                             </button>
                         </div>
@@ -199,27 +213,43 @@
         }).join('');
     }
 
-    function panggilSuara(nomor, nama) {
-        if (!('speechSynthesis' in window)) return;
-        
-        window.speechSynthesis.cancel();
-        
-        // Panggilan khusus untuk Laboratorium
-        const pesan = `Pasien atas nama ${nama.toLowerCase()}. Silakan menuju ruang laboratorium.`;
-        
-        const utterance = new SpeechSynthesisUtterance(pesan);
-        utterance.lang = 'id-ID';
-        utterance.rate = 1.0;
-        
-        window.speechSynthesis.speak(utterance);
-        console.log("🔊 [LOG] Memanggil suara:", pesan);
+    // FUNGSI UTAMA: MENGIRIM SINYAL KE PUSHER
+    function triggerPanggilan(nomor, nama, poli) {
+        calledStatus[nomor] = true;
+        renderTable();
+
+        console.log("📣 [LOG] Memanggil Laboratorium via Pusher:", nomor, nama);
+
+        $.ajax({
+            url: 'panggil_aksi.php',
+            type: 'POST',
+            data: {
+                no_antrean: nomor,
+                nama: nama,
+                poli: poli // Mengirim teks 'LABORATORIUM' agar suara monitor sesuai
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.status === 'success') {
+                    console.log("✅ [LOG] Sinyal berhasil dikirim ke monitor.");
+                } else {
+                    console.error("❌ [LOG] Gagal mengirim sinyal:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("❌ [LOG] Koneksi Error:", error);
+                alert("Gagal terhubung ke panggil_aksi.php");
+            }
+        });
     }
 
     // Interval Jam
     setInterval(() => {
+        const clockEl = document.getElementById('clock');
+        const dateEl = document.getElementById('date-text');
         const now = new Date();
-        document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
-        document.getElementById('date-text').innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        if(clockEl) clockEl.innerText = now.toLocaleTimeString('id-ID');
+        if(dateEl) dateEl.innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     }, 1000);
 
     // Event Listeners

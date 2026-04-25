@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <style>
         :root {
@@ -85,6 +86,7 @@
 
 <script>
     let allData = [];
+    let calledStatus = {}; // Menyimpan status tombol yang sudah diklik
 
     async function fetchData() {
         console.log("🔄 [LOG] Mengambil data dari get_data_far.php...");
@@ -118,20 +120,28 @@
             const isSelesai = item.status === 'Selesai';
             const rowClass = isSelesai ? 'status-selesai' : 'status-proses';
             const namaSafe = item.nama.replace(/'/g, "\\'");
+            
+            // Logika penanda tombol Pusher
+            const isCalled = calledStatus[item.no_antrean] === true;
+            const callText = isCalled ? "Sudah Dipanggil" : "Panggil";
+            const callIcon = isCalled ? "bi-check-circle-fill" : "bi-megaphone-fill";
 
             return `
                 <tr class="${rowClass}">
                     <td class="text-center fw-bold text-muted">${index + 1}</td>
                     <td class="text-center"><span class="badge badge-number">${item.no_antrean}</span></td>
-                    <td class="fw-bold text-uppercase text-dark">${item.nama}</td>
+                    <td class="fw-bold text-uppercase text-dark">
+                        ${item.nama}
+                        <div class="small text-muted fw-normal" style="font-size: 0.75rem;">Status: ${item.status}</div>
+                    </td>
                     <td>${item.ruangan_asal}</td>
                     <td class="text-center">
                         <span class="badge ${isSelesai ? 'bg-success' : 'bg-warning text-dark'}">${item.status}</span>
                     </td>
                     <td class="text-center">
                         <div class="btn-call-group d-inline-flex">
-                            <button class="btn-main-call" onclick="panggilSuara('${item.no_antrean}','${namaSafe}')">
-                                <i class="bi bi-megaphone-fill me-1"></i> Panggil
+                            <button class="btn-main-call" onclick="triggerPanggilan('${item.no_antrean}','${namaSafe}','FARMASI')">
+                                <i class="bi ${callIcon} me-1"></i> ${callText}
                             </button>
                         </div>
                     </td>
@@ -140,28 +150,51 @@
         }).join('');
     }
 
-    function panggilSuara(nomor, nama) {
-        if (!('speechSynthesis' in window)) return;
-        window.speechSynthesis.cancel();
-        const ejaNomor = nomor.split('').join(' ');
-        const pesan = `Pasien atas nama ${nama.toLowerCase()}. Silakan menuju loket farmasi.`;
-        const utterance = new SpeechSynthesisUtterance(pesan);
-        utterance.lang = 'id-ID';
-        utterance.rate = 1.0;
-        window.speechSynthesis.speak(utterance);
+    // FUNGSI UTAMA: MENGIRIM SINYAL PANGGILAN KE PUSHER VIA PHP
+    function triggerPanggilan(nomor, nama, poli) {
+        calledStatus[nomor] = true;
+        renderTable();
+
+        console.log("📣 [LOG] Memanggil ke Pusher:", nomor, nama);
+
+        $.ajax({
+            url: 'panggil_aksi.php',
+            type: 'POST',
+            data: {
+                no_antrean: nomor,
+                nama: nama,
+                poli: poli // Mengirim label 'FARMASI' ke monitor
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.status === 'success') {
+                    console.log("✅ [LOG] Sinyal Pusher terkirim!");
+                } else {
+                    console.error("❌ [LOG] Gagal:", response.message);
+                    alert("Gagal memanggil: " + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("❌ [LOG] Koneksi Error:", error);
+                alert("Kesalahan koneksi ke panggil_aksi.php");
+            }
+        });
     }
 
+    // Interval Update Jam
     setInterval(() => {
         const now = new Date();
-        document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
-        document.getElementById('date-text').innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const clockEl = document.getElementById('clock');
+        if(clockEl) clockEl.innerText = now.toLocaleTimeString('id-ID');
     }, 1000);
 
+    // Event Listeners untuk Filter
     document.getElementById('searchInput').addEventListener('input', renderTable);
     document.getElementById('filterStatus').addEventListener('change', renderTable);
 
-    setInterval(fetchData, 5000);
-    fetchData(); 
+    // Auto Refresh Data tiap 10 detik
+    setInterval(fetchData, 10000);
+    fetchData();
 </script>
 </body>
 </html>
