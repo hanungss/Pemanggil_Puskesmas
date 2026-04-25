@@ -181,11 +181,22 @@
 
     function getDisplayPoli(item) {
         if (!item.poli) return "-";
+        
+        // Logika khusus untuk KIA
         if (item.poli.includes("KIA")) return "KIA";
+        
+        // Logika pengelompokan K3 berdasarkan Umur
         if (item.poli.includes("K3")) {
-            if (item.dokter === "ENDAH PUJIATININGSIH") return "K3 - USIA DEWASA BP UTARA";
-            if (item.dokter === "MAGHFUR ARROZY") return "K3 - USIA LANSIA BP SELATAN";
+            // Konversi umur ke angka, jika bukan angka jadikan 0
+            const umur = parseInt(item.umur) || 0;
+
+            if (umur < 55) {
+                return "K3 - USIA DEWASA BP UTARA";
+            } else {
+                return "K3 - USIA LANSIA BP SELATAN";
+            }
         }
+        
         return item.poli;
     }
 
@@ -197,14 +208,20 @@
             
             const selectPoli = document.getElementById('filterPoli');
             const currentSelection = selectPoli.value;
+            
+            // Generate ulang daftar poli unik untuk filter dropdown
             const polis = [...new Set(data.map(item => getDisplayPoli(item)))].sort();
             
             let options = '<option value="">Semua Poli</option>';
-            polis.forEach(p => options += `<option value="${p}" ${p === currentSelection ? 'selected' : ''}>${p}</option>`);
+            polis.forEach(p => {
+                options += `<option value="${p}" ${p === currentSelection ? 'selected' : ''}>${p}</option>`;
+            });
             selectPoli.innerHTML = options;
 
             renderTable();
-        } catch (e) { console.error("Gagal fetch:", e); }
+        } catch (e) { 
+            console.error("❌ Gagal mengambil data:", e); 
+        }
     }
 
     function renderTable() {
@@ -214,8 +231,11 @@
 
         const filtered = allData.filter(item => {
             const p = getDisplayPoli(item);
-            return (item.nama.toLowerCase().includes(search) || item.no_antrean.toLowerCase().includes(search)) &&
-                   (filter === "" || p === filter);
+            const matchesSearch = item.nama.toLowerCase().includes(search) || 
+                                item.no_antrean.toLowerCase().includes(search);
+            const matchesFilter = filter === "" || p === filter;
+            
+            return matchesSearch && matchesFilter;
         });
 
         tbody.innerHTML = filtered.map((item, index) => {
@@ -225,7 +245,6 @@
             const callText = isCalled ? "Sudah Dipanggil" : "Panggil";
             const callIcon = isCalled ? "bi-check-circle-fill" : "bi-megaphone-fill";
             
-            // Menampilkan umur, jika kosong tampilkan tanda strip
             const displayUmur = item.umur && item.umur !== "-" ? item.umur + " Thn" : "-";
 
             return `
@@ -253,49 +272,49 @@
         }).join('');
     }
 
-function triggerPanggilan(nomor, nama, poli) {
-    // 1. Tandai status di tampilan agar user tahu tombol sudah diklik
-    calledStatus[nomor] = true;
-    renderTable();
+    function triggerPanggilan(nomor, nama, poli) {
+        calledStatus[nomor] = true;
+        renderTable();
 
-    console.log("Mencoba memanggil:", nomor, nama, poli); // Debug di console browser (F12)
+        console.log("📣 Memanggil:", nomor, nama, poli);
 
-    // 2. Kirim data menggunakan AJAX
-    $.ajax({
-        url: 'panggil_aksi.php',
-        type: 'POST',
-        // Gunakan format objek langsung untuk data POST
-        data: {
-            no_antrean: nomor,
-            nama: nama,
-            poli: poli
-        },
-        dataType: 'json', // Kita berharap balasan berupa JSON
-        success: function(response) {
-            console.log("Respon dari Server:", response);
-            if(response.status === 'success') {
-                console.log("Sinyal berhasil dikirim ke Pusher!");
-            } else {
-                alert("Gagal: " + response.message);
+        $.ajax({
+            url: 'panggil_aksi.php',
+            type: 'POST',
+            data: {
+                no_antrean: nomor,
+                nama: nama,
+                poli: poli
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.status === 'success') {
+                    console.log("✅ Berhasil kirim ke Pusher");
+                } else {
+                    alert("Gagal: " + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("❌ AJAX Error:", error);
             }
-        },
-        error: function(xhr, status, error) {
-            console.error("Koneksi Error:", status, error);
-            console.log("Isi Respon Error:", xhr.responseText);
-            alert("Terjadi kesalahan koneksi ke file panggil_aksi.php");
-        }
-    });
-}
+        });
+    }
 
+    // Interval jam real-time
     setInterval(() => {
         const now = new Date();
-        document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
-        document.getElementById('date-text').innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const clock = document.getElementById('clock');
+        const dateText = document.getElementById('date-text');
+        if(clock) clock.innerText = now.toLocaleTimeString('id-ID');
+        if(dateText) dateText.innerText = now.toLocaleDateString('id-ID', { 
+            weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' 
+        });
     }, 1000);
 
     document.getElementById('searchInput').addEventListener('input', renderTable);
     document.getElementById('filterPoli').addEventListener('change', renderTable);
 
+    // Refresh otomatis setiap 5 detik
     setInterval(fetchData, 5000);
     fetchData();
 </script>
