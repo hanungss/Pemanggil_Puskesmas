@@ -1,82 +1,58 @@
 [
     {
-        "no_antrean": "FB-0001",
-        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
-        "dokter": "MASTUTI",
-        "nama": "INDIRA RATNA KUSUMANINGRUM",
-        "jam": "25-04-2026 00:00:00",
-        "umur": "46"
+        "no_antrean": "AA-0001",
+        "poli": "KIA - promprev",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "AHMAD ALFARIZQY",
+        "jam": "24-04-2026 08:01:22",
+        "umur": "3"
     },
     {
-        "no_antrean": "FB-0002",
-        "poli": "LINTAS KLUSTER - PELAYANAN GIGI",
-        "dokter": "MASTUTI",
-        "nama": "DANIS MAULANA MAHONDI PUTRA",
-        "jam": "25-04-2026 00:00:00",
-        "umur": "13"
+        "no_antrean": "AB-0001",
+        "poli": "KIA - promprev",
+        "dokter": "ASIFATUL CHOIRIYAH",
+        "nama": "ARUNIKA MYESHA QAIREEN",
+        "jam": "24-04-2026 08:04:00",
+        "umur": "1"
     },
     {
-        "no_antrean": "DD-0001",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "AGUS HARWANTO",
-        "jam": "25-04-2026 07:14:44",
-        "umur": "44"
+        "no_antrean": "AA-0002",
+        "poli": "KIA",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "ATHARASKA",
+        "jam": "24-04-2026 08:47:05",
+        "umur": "2"
     },
     {
-        "no_antrean": "DD-0002",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "IRAH",
-        "jam": "25-04-2026 07:15:49",
-        "umur": "53"
+        "no_antrean": "AB-0002",
+        "poli": "KIA - promprev",
+        "dokter": "ASIFATUL CHOIRIYAH",
+        "nama": "WAKINEM",
+        "jam": "24-04-2026 08:49:30",
+        "umur": "37"
     },
     {
-        "no_antrean": "DD-0003",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "JUMARNI",
-        "jam": "25-04-2026 07:20:11",
-        "umur": "45"
+        "no_antrean": "AB-0003",
+        "poli": "KIA - promprev",
+        "dokter": "ASIFATUL CHOIRIYAH",
+        "nama": "ANINDHITA ZALFA MAHESWARI",
+        "jam": "24-04-2026 08:51:48",
+        "umur": "2"
     },
     {
-        "no_antrean": "DC-0001",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "PUJIONO",
-        "jam": "25-04-2026 07:21:32",
-        "umur": "57"
+        "no_antrean": "AA-0003",
+        "poli": "KIA - promprev",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "JATI WAHYU SAPUTRA",
+        "jam": "24-04-2026 09:46:19",
+        "umur": "1"
     },
     {
-        "no_antrean": "DC-0002",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "PURWO SUTRISNO",
-        "jam": "25-04-2026 07:23:04",
-        "umur": "84"
-    },
-    {
-        "no_antrean": "DC-0003",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "MAGHFUR ARROZY",
-        "nama": "SATIYEM",
-        "jam": "25-04-2026 07:23:26",
-        "umur": "66"
-    },
-    {
-        "no_antrean": "DD-0004",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "SUPARTI",
-        "jam": "25-04-2026 07:24:45",
-        "umur": "27"
-    },
-    {
-        "no_antrean": "DD-0005",
-        "poli": "K3 - USIA DEWASA & LANSIA",
-        "dokter": "ENDAH PUJIATININGSIH",
-        "nama": "RIZKY VEBRI YANTO",
-        "jam": "25-04-2026 07:25:29",
-        "umur": "22"
+        "no_antrean": "AA-0004",
+        "poli": "KIA",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "MAHARANI ARSY ANNISA",
+        "jam": "24-04-2026 09:48:17",
+        "umur": "28"
     }
 ]

@@ -37,7 +37,6 @@
             padding: 12px;
         }
 
-        /* --- STYLE UNTUK AKTIVASI SPEAKER (MODAL AWAL) --- */
         #speaker-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -53,7 +52,6 @@
             display: flex; align-items: center; gap: 15px;
         }
 
-        /* --- NAVBAR MODERN --- */
         .navbar-custom {
             background: var(--glass-white);
             backdrop-filter: blur(12px);
@@ -67,46 +65,10 @@
             align-items: center;
         }
 
-        .brand-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-puskesmas {
-            height: 50px;
-            width: auto;
-        }
-
-        .brand-text h1 {
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin: 0;
-            color: var(--accent-blue);
-            letter-spacing: -0.5px;
-        }
-
-        .brand-text small {
-            display: block;
-            color: #64748b;
-            font-size: 0.75rem;
-        }
-
-        .social-media-bar {
-            display: flex;
-            gap: 12px;
-            margin-top: 4px;
-        }
-
-        .social-item {
-            font-size: 0.65rem;
-            color: #94a3b8;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            text-decoration: none;
-            font-weight: 600;
-        }
+        .brand-section { display: flex; align-items: center; gap: 15px; }
+        .logo-puskesmas { height: 50px; width: auto; }
+        .brand-text h1 { font-size: 1.3rem; font-weight: 900; margin: 0; color: var(--accent-blue); }
+        .brand-text small { display: block; color: #64748b; font-size: 0.75rem; }
 
         .time-section {
             background: var(--accent-blue);
@@ -116,21 +78,9 @@
             text-align: center;
         }
 
-        #clock {
-            font-size: 1.4rem;
-            font-weight: 800;
-            line-height: 1;
-        }
+        #clock { font-size: 1.4rem; font-weight: 800; line-height: 1; }
+        #date { font-size: 0.65rem; text-transform: uppercase; margin-top: 2px; }
 
-        #date {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-            margin-top: 2px;
-        }
-
-        /* --- RUNNING TEXT --- */
         .ticker-bar {
             background: #fed7aa;
             padding: 8px 15px;
@@ -148,108 +98,75 @@
             border-radius: 6px;
             font-size: 0.7rem;
             font-weight: 800;
-            text-transform: uppercase;
             margin-right: 15px;
         }
 
-        .ticker-text {
-            color: #9a3412;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        /* --- GRID ANTREAN --- */
         #display-antrean {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 12px;
-            flex-grow: 1;
-        }
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Membagi 2 kolom sama besar (50:50) */
+        gap: 15px;
+        flex-grow: 1;
+        align-items: start;
+    }
 
         .poli-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+        background: var(--card-bg);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgba(30, 41, 59, 0.1);
+        overflow: hidden;
+        height: 100%; /* Agar tinggi kartu menyesuaikan layar */
+    }
 
         .poli-header {
-            background: rgba(56, 189, 248, 0.1);
-            padding: 8px;
-            text-align: center;
-            border-bottom: 2px solid var(--accent-blue);
-        }
+        background: var(--accent-blue);
+        padding: 15px;
+        text-align: center;
+    }
 
-        .poli-header span {
-            font-weight: 800;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: var(--accent-blue);
-        }
+    .poli-header span {
+        font-size: 1.2rem; /* Ukuran judul poli lebih besar */
+        color: white;
+        font-weight: 900;
+    }
 
-        .queue-list {
-            flex-grow: 1;
-            padding: 6px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+        .queue-list { padding: 8px; display: flex; flex-direction: column; gap: 8px; }
 
         .queue-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.5);
+            padding: 10px 15px;
+            background: white;
             border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .queue-number {
-            font-weight: 900;
-            font-size: 1.4rem; /* Disesuaikan agar 3 baris muat */
-            color: var(--accent-green);
-            line-height: 1;
-        }
+        font-size: 2.5rem; 
+        font-weight: 900;
+        color: var(--accent-green);
+    }
 
-        .patient-info {
-            text-align: right;
-            max-width: 60%;
-        }
-
+        .patient-info { text-align: right; max-width: 65%; }
         .patient-name {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #1e293b;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-blue);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            display: block;
-        }
-
-        .patient-time {
-            font-size: 0.65rem;
-            color: #64748b;
         }
 
         .total-antrean-footer {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 6px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
             text-align: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #334155;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--accent-blue);
             border-top: 1px dashed rgba(0,0,0,0.1);
-        }
-
-        .empty-state {
-            color: #64748b;
-            font-style: italic;
-            font-size: 0.8rem;
-            text-align: center;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -258,7 +175,6 @@
 <div id="speaker-overlay">
     <i class="fas fa-volume-up fa-4x mb-4 text-success"></i>
     <h2 class="mb-4">SISTEM SUARA ANTREAN</h2>
-    <p class="mb-4 opacity-75">Klik tombol di bawah agar PC Server dapat mengeluarkan suara panggilan</p>
     <button class="btn-activate" onclick="activateSpeaker()">
         <i class="fas fa-power-off"></i> AKTIFKAN SPEAKER
     </button>
@@ -271,114 +187,94 @@
             <img src="https://puskesmastamansari.boyolali.go.id/files/setting/thumb/190_115-1773108375-Logo_Puskesmas_Tanpa_Background.png" alt="Logo" class="logo-puskesmas">
             <div class="brand-text">
                 <h1>Puskesmas Tamansari Kabupaten Boyolali</h1>
-                <small>
-                    <i class="fas fa-map-marker-alt text-danger me-1"></i> 
-                    Jl. Musuk Karanganyar KM6 Bendosari, Karangkendal, Tamansari, Boyolali, Jawa Tengah
-                </small>
-                <div class="social-media-bar">
-                    <span class="social-item"><i class="fab fa-instagram"></i> @puskesmas_tamansari_</span>
-                    <span class="social-item"><i class="fab fa-whatsapp"></i> 0851-1295-5000</span>
-                    <span class="social-item"><i class="fas fa-globe"></i> puskesmastamansari.boyolali.go.id</span>
-                </div>
+                <small><i class="fas fa-map-marker-alt text-danger me-1"></i> Jl. Musuk Karanganyar KM6 Bendosari, Tamansari, Boyolali</small>
             </div>
         </div>
-
         <div class="time-section">
             <div id="clock">00.00.00</div>
             <div id="date">MEMUAT...</div>
         </div>
     </nav>
 
-    <div class="content-area d-flex flex-column flex-grow-1">
-        <div class="ticker-bar">
-            <span class="ticker-info-badge">📢 Info</span>
-            <marquee class="ticker-text">Selamat datang di Puskesmas Tamansari • Mohon mengantre dengan tertib • Silakan menunggu nama Anda dipanggil oleh petugas layanan.</marquee>
-        </div>
-
-        <div id="display-antrean">
-            </div>
+    <div class="ticker-bar">
+        <span class="ticker-info-badge">📢 Info</span>
+        <marquee class="ticker-text">Selamat datang di Puskesmas Tamansari • Mohon mengantre dengan tertib • Silakan menunggu nama Anda dipanggil petugas.</marquee>
     </div>
+
+    <div id="display-antrean"></div>
 </div>
 
 <script>
-
 let isSpeakerActive = false;
 
-// Fungsi untuk mengaktifkan speaker
 function activateSpeaker() {
     const msg = new SpeechSynthesisUtterance("Sistem suara antrean telah aktif");
     msg.lang = 'id-ID';
     window.speechSynthesis.speak(msg);
-    
     document.getElementById('speaker-overlay').style.display = 'none';
     isSpeakerActive = true;
 }
 
 const poliIcons = {
-    "LINTAS KLUSTER - PELAYANAN GIGI": "fa-tooth",
-    "K3 - USIA LANSIA BP SELATAN": "fa-stethoscope", // Nama baru (55 tahun ke atas)
-    "K3 - USIA DEWASA BP UTARA": "fa-user-md"    // Nama baru (55 tahun ke bawah)
+    "KIA": "fa-baby-carriage",
+    "LAB": "fa-flask"
 };
 
 async function updateMonitor() {
     try {
-        const response = await fetch('get_data.php');
-        const data = await response.json();
+        // 1. Ambil Data KIA
+        const resKia = await fetch('get_data.php');
+        const dataKiaRaw = await resKia.json();
+        
+        // 2. Ambil Data LAB
+        let dataLabRaw = [];
+        try {
+            const resLab = await fetch('get_data_lab.php');
+            dataLabRaw = await resLab.json();
+        } catch (e) { console.error("Gagal ambil data LAB", e); }
+
+        // Grouping Data
+        const grouped = {
+            "KIA": dataKiaRaw.filter(item => item.poli && item.poli.includes("KIA")),
+            "LAB": dataLabRaw.filter(item => item.status === 'Proses')
+        };
+
         const container = document.getElementById('display-antrean');
-
-        const categories = Object.keys(poliIcons);
-        const grouped = {};
-        categories.forEach(cat => grouped[cat] = []);
-
-        data.forEach(item => {
-            let currentPoli = item.poli;
-            
-            if (currentPoli.includes("K3")) {
-                // LOGIKA PEMISAH BERDASARKAN UMUR & NAMA BARU
-                const umur = parseInt(item.umur) || 0;
-                if (umur > 55) {
-                    grouped["K3 - USIA LANSIA BP SELATAN"].push(item);
-                } else {
-                    grouped["K3 - USIA DEWASA BP UTARA"].push(item);
-                }
-            } else if (grouped[currentPoli]) {
-                grouped[currentPoli].push(item);
-            }
-        });
-
         let html = '';
-        categories.forEach(poli => {
+
+        Object.keys(poliIcons).forEach(poli => {
             const icon = poliIcons[poli];
-            const allItems = grouped[poli]; 
-            const displayItems = allItems.slice(0, 4); // TETAP TAMPILKAN 3 PASIEN TERATAS
-            const totalCount = allItems.length;
+            const list = grouped[poli] || [];
+            const displayItems = list.slice(0, 4);
+            const totalCount = list.length;
 
             let itemsHtml = '';
             if (displayItems.length > 0) {
-                displayItems.forEach((it, index) => {
+                displayItems.forEach(it => {
+                    const subInfo = poli === "LAB" ? (it.ruangan_asal || "Laboratorium") : (it.jam || "");
                     itemsHtml += `
                         <div class="queue-item">
-                            <div class="queue-number">${index + 1}.${it.no_antrean}</div>
+                            <div class="queue-number">${it.no_antrean}</div>
                             <div class="patient-info">
                                 <span class="patient-name text-uppercase">${it.nama}</span>
-                                <span class="patient-time">${it.jam}</span>
+                                <div class="small text-muted" style="font-size:0.7rem">${subInfo}</div>
                             </div>
                         </div>`;
                 });
             } else {
-                itemsHtml = `<div class="empty-state">tidak ada antrean yang tersedia...</div>`;
+                itemsHtml = `<div class="text-center py-4 opacity-50 small"><i>Antrean Kosong</i></div>`;
             }
 
             html += `
-                <div class="poli-card">
+                <div class="poli-card shadow-sm">
                     <div class="poli-header">
-                        <span><i class="fas ${icon} me-2"></i>${poli}</span>
+                        <span><i class="fas ${icon} me-2 text-info"></i>ANTREAN ${poli}</span>
                     </div>
                     <div class="queue-list">
                         ${itemsHtml}
                     </div>
                     <div class="total-antrean-footer">
-                        Total Antrean: ${totalCount} Pasien
+                        Total Menunggu: ${totalCount} Pasien
                     </div>
                 </div>`;
         });
@@ -389,7 +285,7 @@ async function updateMonitor() {
     }
 }
 
-// Clock Logic
+// Clock
 setInterval(() => {
     const now = new Date();
     document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID').replace(/:/g, '.');
@@ -398,41 +294,25 @@ setInterval(() => {
     }).toUpperCase();
 }, 1000);
 
-// --- LOGIKA PUSHER LISTENER ---
-const pusher = new Pusher('8b7f969aee7f1ab6ea06', {
-    cluster: 'ap1'
-});
-
+// Pusher
+const pusher = new Pusher('8b7f969aee7f1ab6ea06', { cluster: 'ap1' });
 const channel = pusher.subscribe('antrean-channel');
-
 channel.bind('panggil-event', function(data) {
     if (isSpeakerActive) {
-        // Hentikan suara yang sedang berjalan agar tidak tumpang tindih
         window.speechSynthesis.cancel();
-
-        // Normalisasi nama poli agar enak didengar (seperti logika di tombol manual)
-        const poliNatural = data.poli.toLowerCase()
-            .replace('&', 'dan')
-            .replace('-', ' ')
-            .replace('pelayanan', '');
-
-        // FORMAT PESAN SESUAI PERMINTAAN
+        const poliNatural = data.poli.toLowerCase().replace('&', 'dan').replace('-', ' ').replace('pelayanan', '');
         const pesan = `Pasien atas nama ${data.nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
-        
         const utterance = new SpeechSynthesisUtterance(pesan);
-        
-        utterance.lang = 'id-ID'; 
-        utterance.rate = 1.0; 
-        utterance.pitch = 1.0; 
-
+        utterance.lang = 'id-ID';
+        utterance.rate = 1.0;
         window.speechSynthesis.speak(utterance);
+        // Refresh monitor instan saat dipanggil
+        updateMonitor();
     }
 });
 
-// Update data every 5 seconds
 setInterval(updateMonitor, 5000);
 updateMonitor();
 </script>
-
 </body>
 </html>
