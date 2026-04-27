@@ -7,7 +7,8 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
+    <link rel="icon" type="image/png" href="https://puskesmastamansari.boyolali.go.id/files/setting/thumb/190_115-1773108375-Logo_Puskesmas_Tanpa_Background.png">
+
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -184,13 +185,19 @@
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_utara.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-sign-turn-left-fill"></i></div>
-                    <p class="card-title">TV Ruang Utara (BP DEWASA, BP LANSIA + GIGI)</p>
+                    <p class="card-title">TV Ruang Sayap Utara (BP DEWASA, BP LANSIA + GIGI)</p>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_selatan.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-sign-turn-right-fill"></i></div>
-                    <p class="card-title">TV Ruang Selatan (KIA + LAB)</p>
+                    <p class="card-title">TV Ruang Sayap Selatan (KIA + LAB)</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="https://tamansari.rf.gd" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-person-video3"></i></div>
+                    <p class="card-title">TV Pendaftaran</p>
                 </a>
             </div>
         </div>
@@ -215,6 +222,12 @@
                 <a href="panggil_lab.php" target="_blank" class="menu-card bg-caller shadow-sm">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-eyedropper"></i></div>
                     <p class="card-title">Pemanggil Laboratorium</p>
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a href="https://tamansari.rf.gd/loketA.php" target="_blank" class="menu-card bg-caller shadow-sm">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-person-add"></i></div>
+                    <p class="card-title">Pemanggil Pendaftaran</p>
                 </a>
             </div>
         </div>

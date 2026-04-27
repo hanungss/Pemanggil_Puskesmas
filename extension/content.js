@@ -45,7 +45,7 @@ function ambilDataEpuskesmas() {
     if (listAntrean.length > 0) {
         console.log(`📤 Mengirim ${listAntrean.length} data ke simpan_antrean.php...`);
 
-        fetch('http://localhost/Pemanggil_Puskesmas/simpan_antrean.php', {
+        fetch('http://localhost:8080/simpan_antrean.php', {
             method: 'POST',
             body: JSON.stringify(listAntrean),
             headers: { 'Content-Type': 'application/json' }

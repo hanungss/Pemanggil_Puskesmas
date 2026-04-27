@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://puskesmastamansari.boyolali.go.id/files/setting/thumb/190_115-1773108375-Logo_Puskesmas_Tanpa_Background.png">
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
     <style>
@@ -407,10 +408,10 @@ const channel = pusher.subscribe('antrean-channel');
 
 channel.bind('panggil-event', function(data) {
     if (isSpeakerActive) {
-        // Hentikan suara yang sedang berjalan agar tidak tumpang tindih
+        // Hentikan suara TTS yang sedang berjalan agar tidak tumpang tindih
         window.speechSynthesis.cancel();
 
-        // Normalisasi nama poli agar enak didengar (seperti logika di tombol manual)
+        // Normalisasi nama poli agar enak didengar
         const poliNatural = data.poli.toLowerCase()
             .replace('&', 'dan')
             .replace('-', ' ')
@@ -419,13 +420,22 @@ channel.bind('panggil-event', function(data) {
         // FORMAT PESAN SESUAI PERMINTAAN
         const pesan = `Pasien atas nama ${data.nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
         
-        const utterance = new SpeechSynthesisUtterance(pesan);
-        
-        utterance.lang = 'id-ID'; 
-        utterance.rate = 1.0; 
-        utterance.pitch = 1.0; 
+        // 1. Definisikan suara bel
+        const bell = new Audio('suara/panggilan.mp3');
 
-        window.speechSynthesis.speak(utterance);
+        // 2. Jalankan Google TTS HANYA setelah bel selesai berbunyi
+        bell.onended = () => {
+            const utterance = new SpeechSynthesisUtterance(pesan);
+            
+            utterance.lang = 'id-ID'; 
+            utterance.rate = 1.0; 
+            utterance.pitch = 1.0; 
+
+            window.speechSynthesis.speak(utterance);
+        };
+
+        // 3. Putar suara bel terlebih dahulu
+        bell.play().catch(e => console.log("Audio play blocked by browser:", e));
     }
 });
 

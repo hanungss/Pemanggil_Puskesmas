@@ -37,7 +37,7 @@ function syncLab() {
 
     if (dataKeirim.length > 0) {
         console.log(`🚀 [DEBUG] Mengirim ${dataKeirim.length} data ke server...`);
-        fetch('http://localhost/Pemanggil_Puskesmas/simpan_antrean_lab.php', {
+        fetch('http://localhost:8080/simpan_antrean_lab.php', {
             method: 'POST',
             body: JSON.stringify(dataKeirim),
             headers: { 'Content-Type': 'application/json' }

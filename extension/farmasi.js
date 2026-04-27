@@ -38,7 +38,7 @@ function syncFarmasi() {
 
     if (dataKeirim.length > 0) {
         console.log(`🚀 [DEBUG] Mengirim ${dataKeirim.length} data farmasi...`);
-        fetch('http://localhost/Pemanggil_Puskesmas/simpan_antrean_far.php', {
+        fetch('http://localhost:8080/simpan_antrean_far.php', {
             method: 'POST',
             body: JSON.stringify(dataKeirim),
             headers: { 'Content-Type': 'application/json' }
