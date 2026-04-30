@@ -1,0 +1,19 @@
+No: 0001 | Jam: 08:04:13 | Nama: SUPAMI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0002 | Jam: 08:12:18 | Nama: INAYAH | Dari: KIA | Status: Selesai
+No: 0003 | Jam: 08:32:08 | Nama: ERIKA RACHMAWATI | Dari: KIA | Status: Selesai
+No: 0004 | Jam: 08:37:57 | Nama: ILHAM WIDODO | Dari: KIA | Status: Selesai
+No: 0005 | Jam: 08:50:48 | Nama: SITI KAROMAH | Dari: KIA | Status: Selesai
+No: 0006 | Jam: 08:51:08 | Nama: SUGIRAH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0007 | Jam: 08:56:51 | Nama: PARIYEM | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0008 | Jam: 09:00:44 | Nama: SYAKILA ADINDA NUHA | Dari: KIA | Status: Selesai
+No: 0009 | Jam: 09:04:58 | Nama: LESTARI | Dari: KIA | Status: Selesai
+No: 0010 | Jam: 09:13:06 | Nama: TOTOK MINTORO | Dari: LINTAS KLUSTER - INAP UMUM | Status: Selesai
+No: 0011 | Jam: 09:14:21 | Nama: SUKEMI | Dari: LINTAS KLUSTER - INAP UMUM | Status: Selesai
+No: 0012 | Jam: 09:15:10 | Nama: SRI WIGATI | Dari: LINTAS KLUSTER - INAP UMUM | Status: Selesai
+No: 0013 | Jam: 09:16:36 | Nama: PARMI | Dari: LINTAS KLUSTER - GAWAT DARURAT | Status: Selesai
+No: 0014 | Jam: 09:19:17 | Nama: PURNAMI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0015 | Jam: 09:27:05 | Nama: NGATIMAN | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0016 | Jam: 09:41:52 | Nama: RAHAYU ARTININGSIH | Dari: KIA | Status: Selesai
+No: 0017 | Jam: 09:43:22 | Nama: TRI BEBY HEPPY | Dari: KIA | Status: Selesai
+No: 0018 | Jam: 11:58:30 | Nama: PURI SETIYANTO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0019 | Jam: 14:07:20 | Nama: SEMI | Dari: LINTAS KLUSTER - INAP UMUM | Status: Selesai

@@ -1,0 +1,30 @@
+<?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
+date_default_timezone_set('Asia/Jakarta');
+
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
+
+if (!empty($data)) {
+    $folder = 'data';
+    if (!is_dir($folder)) mkdir($folder, 0777, true);
+
+    // Nama file diganti menjadi antrean_res
+    $file = $folder . '/antrean_res_' . date('Y-m-d') . '.txt';[cite: 5]
+    $content = "";
+
+    foreach ($data as $row) {
+        $no     = $row['no_antrean'] ?? '-';
+        $jam    = $row['jam'] ?? '-';
+        $nama   = $row['nama'] ?? '-';
+        $asal   = $row['ruangan_asal'] ?? '-';
+        $status = $row['status'] ?? 'Proses';
+        $content .= "No: $no | Jam: $jam | Nama: $nama | Dari: $asal | Status: $status\n";[cite: 5]
+    }
+
+    file_put_contents($file, $content);
+    echo json_encode(["status" => "success"]);
+}
+?>

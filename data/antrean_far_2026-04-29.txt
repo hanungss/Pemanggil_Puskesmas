@@ -1,0 +1,65 @@
+No: 0001 | Jam: 29-04-2026 07:47:03 | Nama: AQILA PUTRI ARIYANI | Dari: LINTAS KLUSTER - GAWAT DARURAT | Status: Selesai
+No: 0003 | Jam: 29-04-2026 08:08:46 | Nama: ABIAN ALEXSA NADANA | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0004 | Jam: 29-04-2026 08:14:26 | Nama: TUMINAH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0005 | Jam: 29-04-2026 08:15:40 | Nama: SUPAMI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0007 | Jam: 29-04-2026 08:18:33 | Nama: AGUS HARWANTO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0006 | Jam: 29-04-2026 08:19:04 | Nama: NASIFA WULAN SUCI | Dari: LINTAS KLUSTER - PELAYANAN GIGI | Status: Selesai
+No: 0010 | Jam: 29-04-2026 08:21:28 | Nama: ELFATIH RAFFASYA ATHALLA | Dari: KIA | Status: Selesai
+No: 0011 | Jam: 29-04-2026 08:22:57 | Nama: ZAINAL PRASETYO MUSTAQIM | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0008 | Jam: 29-04-2026 08:26:00 | Nama: BAYI NYONYA REZQIKA WIDHYARTO PUTRI | Dari: KIA | Status: Selesai
+No: 0013 | Jam: 29-04-2026 08:26:37 | Nama: SUTI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0012 | Jam: 29-04-2026 08:27:10 | Nama: IRWAN HEPI PRATAMA | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0017 | Jam: 29-04-2026 08:38:37 | Nama: AISYAH NUR ROHMAH | Dari: KIA | Status: Selesai
+No: 0016 | Jam: 29-04-2026 08:39:00 | Nama: HARLAN PUTRA RAMADHAN | Dari: LINTAS KLUSTER - PELAYANAN GIGI | Status: Selesai
+No: 0014 | Jam: 29-04-2026 08:39:19 | Nama: SARJITO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0002 | Jam: 29-04-2026 08:43:16 | Nama: JEMINGAN | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0018 | Jam: 29-04-2026 08:43:54 | Nama: ALIF NUR RAHMAT | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0015 | Jam: 29-04-2026 08:44:19 | Nama: SUPARTI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0019 | Jam: 29-04-2026 08:44:43 | Nama: INAYAH | Dari: KIA | Status: Selesai
+No: 0020 | Jam: 29-04-2026 08:46:22 | Nama: PRADIPTA AYU AZZAHRA | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0021 | Jam: 29-04-2026 08:55:19 | Nama: TENTREM | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0022 | Jam: 29-04-2026 08:56:05 | Nama: LENI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0024 | Jam: 29-04-2026 08:56:45 | Nama: SUMINAH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0025 | Jam: 29-04-2026 08:57:24 | Nama: WAROWIYAH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0023 | Jam: 29-04-2026 08:57:54 | Nama: LEGIYEM | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0027 | Jam: 29-04-2026 09:10:54 | Nama: SRI YATEMI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0028 | Jam: 29-04-2026 09:11:12 | Nama: SRI KATRIMO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0029 | Jam: 29-04-2026 09:11:32 | Nama: SUTIYEM | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0030 | Jam: 29-04-2026 09:16:59 | Nama: SUNARSI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0032 | Jam: 29-04-2026 09:18:28 | Nama: SYAHARUDDIN | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0033 | Jam: 29-04-2026 09:19:51 | Nama: SUGIRAH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0034 | Jam: 29-04-2026 09:27:45 | Nama: SRI PURWANTI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0031 | Jam: 29-04-2026 09:32:07 | Nama: ERIKA RACHMAWATI | Dari: KIA | Status: Selesai
+No: 0009 | Jam: 29-04-2026 09:40:53 | Nama: MUHAMMAD BAYU AJI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0035 | Jam: 29-04-2026 09:42:09 | Nama: NGATIMAN | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0026 | Jam: 29-04-2026 09:48:16 | Nama: SLAMET RAHARJO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0036 | Jam: 29-04-2026 09:50:48 | Nama: FAREL EGA SANTOSO | Dari: LINTAS KLUSTER - PELAYANAN GIGI | Status: Selesai
+No: 0037 | Jam: 29-04-2026 09:53:44 | Nama: SAMINI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0038 | Jam: 29-04-2026 10:15:54 | Nama: LESTARI | Dari: KIA | Status: Selesai
+No: 0039 | Jam: 29-04-2026 10:18:43 | Nama: SRI MULYANI | Dari: KIA | Status: Selesai
+No: 0041 | Jam: 29-04-2026 10:19:19 | Nama: PURNAMI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0040 | Jam: 29-04-2026 10:22:25 | Nama: YULIANTO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0042 | Jam: 29-04-2026 10:22:57 | Nama: LUWES | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0043 | Jam: 29-04-2026 10:28:56 | Nama: RAHAYU ARTININGSIH | Dari: KIA | Status: Selesai
+No: 0044 | Jam: 29-04-2026 10:29:21 | Nama: NUR ISTIQOMAH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0045 | Jam: 29-04-2026 10:29:46 | Nama: DWI ASTUTI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0046 | Jam: 29-04-2026 10:52:18 | Nama: YATMO SURIP | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0049 | Jam: 29-04-2026 10:52:43 | Nama: SUYATI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0048 | Jam: 29-04-2026 10:53:10 | Nama: SRI NGATMI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0047 | Jam: 29-04-2026 10:53:27 | Nama: LEGIYEM | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0050 | Jam: 29-04-2026 11:01:07 | Nama: WARNI PADI WIHARJO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0051 | Jam: 29-04-2026 11:01:39 | Nama: TRIMO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0052 | Jam: 29-04-2026 11:08:13 | Nama: SITI FATONAH | Dari: KIA | Status: Selesai
+No: 0054 | Jam: 29-04-2026 11:09:47 | Nama: TARJO MULYONO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0055 | Jam: 29-04-2026 11:13:05 | Nama: YUNIASIH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0053 | Jam: 29-04-2026 11:17:16 | Nama: SUKINI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0056 | Jam: 29-04-2026 11:27:50 | Nama: RAWIS JALU PRAKOSO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0057 | Jam: 29-04-2026 11:35:04 | Nama: HARTATI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0058 | Jam: 29-04-2026 11:48:58 | Nama: SUMADI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0060 | Jam: 29-04-2026 11:50:54 | Nama: FADIA ALYA | Dari: LINTAS KLUSTER - GAWAT DARURAT | Status: Selesai
+No: 0059 | Jam: 29-04-2026 11:51:23 | Nama: PURWANTI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0061 | Jam: 29-04-2026 11:57:00 | Nama: DARSO SAWUKIRDI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0063 | Jam: 29-04-2026 12:00:22 | Nama: YITNO PAWIRO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0062 | Jam: 29-04-2026 12:00:46 | Nama: MARDANI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0064 | Jam: 29-04-2026 12:11:05 | Nama: PURI SETIYANTO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0065 | Jam: 29-04-2026 14:05:54 | Nama: SUTARTI | Dari: LINTAS KLUSTER - GAWAT DARURAT | Status: Selesai

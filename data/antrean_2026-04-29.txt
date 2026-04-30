@@ -1,0 +1,18 @@
+[
+    {
+        "no_antrean": "DD-0001",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "PAIKEM",
+        "jam": "30-04-2026 06:15:18",
+        "umur": "63"
+    },
+    {
+        "no_antrean": "AB-0001",
+        "poli": "KIA",
+        "dokter": "AMBAR SETYOWATI",
+        "nama": "RIA MISYANTI",
+        "jam": "30-04-2026 06:23:07",
+        "umur": "26"
+    }
+]
