@@ -14,6 +14,7 @@
       "js": [
         "laboratorium.js",
         "farmasi.js",
+        "resep.js",
         "content.js"
       ],
       "run_at": "document_idle"

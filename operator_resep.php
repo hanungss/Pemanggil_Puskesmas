@@ -87,12 +87,14 @@
     let calledStatus = {};
 
     async function fetchData() {
+        console.log("🔄 [LOG] Mengambil data dari get_data_res.php...");
         try {
-            const response = await fetch('get_data_res.php'); // Mengambil data resep[cite: 2]
+            const response = await fetch('get_data_res.php');
             allData = await response.json();
+            console.log("📊 [LOG] Data diterima:", allData.length);
             renderTable();
         } catch (e) { 
-            console.error("Gagal sinkronisasi data resep:", e); 
+            console.error("❌ [LOG] Gagal sinkronisasi:", e); 
         }
     }
 

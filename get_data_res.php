@@ -1,14 +1,16 @@
 <?php
+// get_data_far.php
 header("Content-Type: application/json");
 date_default_timezone_set('Asia/Jakarta');
 
-$file = 'data/antrean_res_' . date('Y-m-d') . '.txt';[cite: 2]
+$file = 'data/antrean_res_' . date('Y-m-d') . '.txt';
 $data = [];
 
 if (file_exists($file)) {
     $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
-        $pattern = '/No:\s*(.*?)\s*\|\s*Jam:\s*(.*?)\s*\|\s*Nama:\s*(.*?)\s*\|\s*Dari:\s*(.*?)\s*\|\s*Status:\s*(.*)/';[cite: 2]
+        // Pola Regex harus sangat akurat
+        $pattern = '/No:\s*(.*?)\s*\|\s*Jam:\s*(.*?)\s*\|\s*Nama:\s*(.*?)\s*\|\s*Dari:\s*(.*?)\s*\|\s*Status:\s*(.*)/';
         if (preg_match($pattern, $line, $m)) {
             $data[] = [
                 'no_antrean' => trim($m[1]),
@@ -20,4 +22,4 @@ if (file_exists($file)) {
         }
     }
 }
-echo json_encode(array_reverse($data));[cite: 2]
+echo json_encode(array_reverse($data));

@@ -177,6 +177,12 @@
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
+                <a href="monitor_resep.php" target="_blank" class="menu-card bg-monitor">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-receipt"></i></div>
+                    <p class="card-title">TV Resep</p>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
                 <a href="monitor_laboratorium.php" target="_blank" class="menu-card bg-monitor">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-eyedropper"></i></div>
                     <p class="card-title">TV Laboratorium</p>
@@ -216,6 +222,12 @@
                 <a href="panggil_farmasi.php" target="_blank" class="menu-card bg-caller shadow-sm">
                     <div class="icon-box bg-white shadow-sm"><i class="bi bi-prescription2"></i></div>
                     <p class="card-title">Pemanggil Farmasi</p>
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a href="operator_resep.php" target="_blank" class="menu-card bg-caller shadow-sm">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-receipt"></i></div>
+                    <p class="card-title">Pemanggil Resep</p>
                 </a>
             </div>
             <div class="col-12 col-md-4">

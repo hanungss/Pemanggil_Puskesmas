@@ -1,3 +1,4 @@
+// resep.js
 function syncResep() {
     console.log("🔍 [DEBUG] Memulai scan tabel resep...");
     const table = document.querySelector("table.datatable");
@@ -12,20 +13,20 @@ function syncResep() {
 
     rows.forEach((row) => {
         const cols = row.querySelectorAll("td");
-        if (cols.length < 19) return;[cite: 1]
+        
+        // Sesuai logika kamu, pastikan kolom tersedia (Tabel resep punya 20 kolom)
+        if (cols.length < 14) return;
 
-        // Status berdasarkan class sesuai footer HTML resep
-        let statusAntrean = 'Proses';
-        if (row.classList.contains('success')) {
-            statusAntrean = 'Selesai';[cite: 1]
-        }
+        // Status: class 'success' berarti obat sudah diproses/resep selesai
+        const statusAntrean = row.classList.contains('success') ? 'Selesai' : 'Proses';
 
-        // Penyesuaian Indeks berdasarkan HTML resep yang diupload
-        const noAntrean = cols[2]?.innerText.trim() || "-"; // No. Antrean[cite: 1]
-        const jam       = cols[3]?.innerText.trim() || "-"; // Tanggal Resep[cite: 1]
-        const nama      = cols[4]?.innerText.trim() || "-"; // Nama Pasien[cite: 1]
-        const asal      = cols[17]?.innerText.trim() || "-"; // Ruangan Asal[cite: 1]
-
+        // Penyesuaian Indeks berdasarkan struktur HTML tabel resep:
+        // Index dimulai dari 0. Kolom ke-3 = index [2], Kolom ke-5 = index [4], dst.
+        const noAntrean = cols[2]?.innerText.trim() || "-";
+        const jam       = cols[3]?.innerText.trim() || "-";
+        const nama      = cols[4]?.innerText.trim() || "-";
+        const asal      = cols[17]?.innerText.trim() || "-";
+        
         dataKeirim.push({
             no_antrean: noAntrean,
             poli: "RESEP",
@@ -37,15 +38,17 @@ function syncResep() {
     });
 
     if (dataKeirim.length > 0) {
-        // Mengirim ke file simpan baru: simpan_antrean_res.php
+        console.log(`🚀 [DEBUG] Mengirim ${dataKeirim.length} data resep...`);
         fetch('http://localhost:8080/simpan_antrean_res.php', {
             method: 'POST',
             body: JSON.stringify(dataKeirim),
             headers: { 'Content-Type': 'application/json' }
         })
         .then(res => res.json())
-        .then(res => console.log("✅ [DEBUG] Respon Server Resep:", res))
+        .then(res => console.log("✅ [DEBUG] Respon Server:", res))
         .catch(err => console.error("❌ [DEBUG] Fetch Error:", err));
     }
 }
+
+// Jalankan otomatis setiap 5 detik
 setInterval(syncResep, 5000);
