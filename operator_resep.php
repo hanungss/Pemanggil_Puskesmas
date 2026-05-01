@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operator Resep - Puskesmas Tamansari</title>
+    <title>Operator Farmasi - Puskesmas Tamansari</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -30,12 +30,13 @@
         .btn-call-group { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .btn-main-call { background: var(--far-green); color: white; border: none; padding: 8px 16px; font-weight: 600; }
         .btn-main-call:hover { background: #059669; }
+        .btn-side-call { background: #4b5563; color: white; border: none; padding: 8px 12px; }
     </style>
 </head>
 <body>
 
 <div class="header-container">
-    <h1 class="fw-bold"><i class="fas fa-file-medical me-3"></i>OPERATOR RESEP</h1>
+    <h1 class="fw-bold"><i class="fas fa-pills me-3"></i>OPERATOR FARMASI</h1>
     <h2 class="h5 fw-light opacity-75">Puskesmas Tamansari - Boyolali</h2>
     <div class="clock-capsule">
         <span id="clock">00:00:00</span>
@@ -56,8 +57,8 @@
                 <div class="input-group shadow-sm">
                     <span class="input-group-text bg-white"><i class="bi bi-funnel text-success"></i></span>
                     <select id="filterStatus" class="form-select form-select-lg">
-                        <option value="Proses">Belum Selesai (Proses)</option>
-                        <option value="Selesai">Sudah Selesai (Selesai)</option>
+                        <option value="Proses">Belum Ambil Obat (Proses)</option>
+                        <option value="Selesai">Sudah Ambil Obat (Selesai)</option>
                         <option value="">Tampilkan Semua</option>
                     </select>
                 </div>
@@ -71,12 +72,13 @@
                         <th width="5%">NO</th>
                         <th width="15%">ANTREAN</th>
                         <th width="30%">NAMA PASIEN</th>
-                        <th width="20%">DARI UNIT</th>
+                        <th width="20%">UNIT ASAL</th>
                         <th width="10%">STATUS</th>
                         <th width="20%">AKSI</th>
                     </tr>
                 </thead>
-                <tbody id="display-antrean"></tbody>
+                <tbody id="display-antrean">
+                    </tbody>
             </table>
         </div>
     </div>
@@ -84,13 +86,17 @@
 
 <script>
     let allData = [];
-    let calledStatus = {};
+    let calledStatus = {}; // Menyimpan status tombol yang sudah diklik
 
-    async function fetchData() {
+async function fetchData() {
         console.log("🔄 [LOG] Mengambil data dari get_data_res.php...");
         try {
             const response = await fetch('get_data_res.php');
-            allData = await response.json();
+            let data = await response.json();
+            
+            // FIX: Urutkan data berdasarkan no_antrean dari terkecil ke terbesar (Ascending)
+            allData = data.sort((a, b) => a.no_antrean.localeCompare(b.no_antrean));
+            
             console.log("📊 [LOG] Data diterima:", allData.length);
             renderTable();
         } catch (e) { 
@@ -110,13 +116,16 @@
         });
 
         if (filtered.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="6" class="text-center py-5 text-muted">Data resep tidak ditemukan</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="6" class="text-center py-5 text-muted">Data tidak ditemukan</td></tr>`;
             return;
         }
 
         tbody.innerHTML = filtered.map((item, index) => {
             const isSelesai = item.status === 'Selesai';
             const rowClass = isSelesai ? 'status-selesai' : 'status-proses';
+            const namaSafe = item.nama.replace(/'/g, "\\'");
+            
+            // Logika penanda tombol Pusher
             const isCalled = calledStatus[item.no_antrean] === true;
             const callText = isCalled ? "Sudah Dipanggil" : "Panggil";
             const callIcon = isCalled ? "bi-check-circle-fill" : "bi-megaphone-fill";
@@ -134,39 +143,60 @@
                         <span class="badge ${isSelesai ? 'bg-success' : 'bg-warning text-dark'}">${item.status}</span>
                     </td>
                     <td class="text-center">
-                        <button class="btn-main-call rounded shadow-sm" onclick="triggerPanggilan('${item.no_antrean}','${item.nama.replace(/'/g, "\\'")}','RESEP')">
-                            <i class="bi ${callIcon} me-1"></i> ${callText}
-                        </button>
+                        <div class="btn-call-group d-inline-flex">
+                            <button class="btn-main-call" onclick="triggerPanggilan('${item.no_antrean}','${namaSafe}','FARMASI')">
+                                <i class="bi ${callIcon} me-1"></i> ${callText}
+                            </button>
+                        </div>
                     </td>
                 </tr>
             `;
         }).join('');
     }
 
+    // FUNGSI UTAMA: MENGIRIM SINYAL PANGGILAN KE PUSHER VIA PHP
     function triggerPanggilan(nomor, nama, poli) {
         calledStatus[nomor] = true;
         renderTable();
 
+        console.log("📣 [LOG] Memanggil ke Pusher:", nomor, nama);
+
         $.ajax({
             url: 'panggil_aksi.php',
             type: 'POST',
-            data: { no_antrean: nomor, nama: nama, poli: poli },
+            data: {
+                no_antrean: nomor,
+                nama: nama,
+                poli: poli // Mengirim label 'FARMASI' ke monitor
+            },
             dataType: 'json',
             success: function(response) {
-                console.log("Sinyal panggil resep terkirim");
+                if(response.status === 'success') {
+                    console.log("✅ [LOG] Sinyal Pusher terkirim!");
+                } else {
+                    console.error("❌ [LOG] Gagal:", response.message);
+                    alert("Gagal memanggil: " + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("❌ [LOG] Koneksi Error:", error);
+                alert("Kesalahan koneksi ke panggil_aksi.php");
             }
         });
     }
 
+    // Interval Update Jam
     setInterval(() => {
         const now = new Date();
         const clockEl = document.getElementById('clock');
         if(clockEl) clockEl.innerText = now.toLocaleTimeString('id-ID');
     }, 1000);
 
+    // Event Listeners untuk Filter
     document.getElementById('searchInput').addEventListener('input', renderTable);
     document.getElementById('filterStatus').addEventListener('change', renderTable);
 
+    // Auto Refresh Data tiap 10 detik
     setInterval(fetchData, 10000);
     fetchData();
 </script>

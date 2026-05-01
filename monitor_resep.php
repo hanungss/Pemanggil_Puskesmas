@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor Antrean Resep - Puskesmas Tamansari</title>
+    <title>Monitor Antrean Farmasi - Puskesmas Tamansari</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,8 +12,8 @@
 
     <style>
         :root {
-            --bg-page: #f0fdf4; 
-            --primary-green: #059669; 
+            --bg-page: #f0fdf4; /* Hijau sangat muda khas farmasi */
+            --primary-green: #059669; /* Hijau Farmasi */
             --soft-green: #d1fae5;
             --text-dark: #064e3b;
             --accent-orange: #f59e0b;
@@ -34,6 +34,7 @@
             padding: 15px;
         }
 
+        /* --- STYLE UNTUK AKTIVASI SPEAKER (MODAL AWAL) --- */
         #speaker-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -43,12 +44,13 @@
             z-index: 9999; color: white;
         }
         .btn-activate {
-            background: #22c55e; color: white; border: none;
+            background: var(--accent-green); color: white; border: none;
             padding: 20px 40px; border-radius: 50px; font-size: 1.5rem;
             font-weight: 800; cursor: pointer; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.4);
             display: flex; align-items: center; gap: 15px;
         }
 
+        /* --- HEADER --- */
         .navbar-custom {
             background: #ffffff;
             padding: 12px 25px;
@@ -89,6 +91,7 @@
             color: var(--primary-green);
         }
 
+        /* --- SPLIT LAYOUT --- */
         .split-container {
             display: flex;
             flex-grow: 1;
@@ -96,6 +99,7 @@
             height: calc(100vh - 180px);
         }
 
+        /* VIDEO */
         .video-section {
             flex: 1.3; 
             background: #000;
@@ -112,6 +116,7 @@
             border: none;
         }
 
+        /* ANTREAN */
         .queue-section {
             flex: 1;
             background: #ffffff;
@@ -198,6 +203,7 @@
             color: var(--primary-green);
         }
 
+        /* TICKER */
         .ticker-bar {
             background: #ffffff;
             padding: 12px;
@@ -229,13 +235,14 @@
     </button>
 </div>
 
+
 <div class="main-wrapper">
     <nav class="navbar-custom">
         <div class="d-flex align-items-center gap-3">
             <img src="https://puskesmastamansari.boyolali.go.id/files/setting/thumb/190_115-1773108375-Logo_Puskesmas_Tanpa_Background.png" alt="Logo" class="logo-puskesmas">
             <div class="brand-text">
                 <h1>Puskesmas Tamansari</h1>
-                <p class="m-0 text-muted fw-bold small"><i class="fas fa-pills text-success me-1"></i> MONITOR ANTREAN RESEP</p>
+                <p class="m-0 text-muted fw-bold small"><i class="fas fa-pills text-success me-1"></i> MONITOR PENGAMBILAN OBAT (FARMASI)</p>
             </div>
         </div>
         <div class="time-section">
@@ -251,9 +258,10 @@
 
         <div class="queue-section">
             <div class="poli-title-bar">
-                <h2>ANTREAN RESEP MASUK</h2>
+                <h2>ANTREAN LOKET FARMASI</h2>
             </div>
-            <div class="queue-list" id="queue-display"></div>
+            <div class="queue-list" id="queue-display">
+                </div>
             <div class="total-footer" id="total-antrean">
                 Menunggu: 0 Pasien
             </div>
@@ -263,33 +271,38 @@
     <div class="ticker-bar">
         <span class="ticker-label">INFO</span>
         <marquee class="fw-bold text-dark fs-5">
-            Harap tunggu panggilan petugas farmasi • Pastikan nama yang dipanggil sesuai dengan identitas Anda • Budayakan antre dengan tertib.
+            Harap siapkan kertas resep atau kartu berobat Anda • Pastikan nama yang dipanggil sesuai dengan identitas Anda • Budayakan antre dengan tertib demi kenyamanan bersama.
         </marquee>
     </div>
 </div>
 
 <script>
+
 let isSpeakerActive = false;
 
+// Fungsi untuk mengaktifkan speaker
 function activateSpeaker() {
-    const msg = new SpeechSynthesisUtterance("Sistem suara antrean resep telah aktif");
+    const msg = new SpeechSynthesisUtterance("Sistem suara antrean telah aktif");
     msg.lang = 'id-ID';
     window.speechSynthesis.speak(msg);
+    
     document.getElementById('speaker-overlay').style.display = 'none';
     isSpeakerActive = true;
 }
-
 async function updateMonitor() {
+    console.log("🔄 [LOG] Memperbarui antrean luar farmasi...");
     try {
-        const response = await fetch('get_data_res.php'); // Menggunakan file resep[cite: 2]
+        const response = await fetch('get_data_res.php');
         const data = await response.json();
         
-        // Hanya tampilkan status "Proses"[cite: 3]
+        // --- LOGIKA FILTER: Hanya status "Proses" ---
         const activeQueue = data.filter(item => item.status === 'Proses');
         
         const container = document.getElementById('queue-display');
         document.getElementById('total-antrean').innerText = `Menunggu: ${activeQueue.length} Pasien`;
 
+        // Tampilkan 4-5 antrean terlama (yang harus segera siap)
+        // Karena get_data_far.php di-reverse di server, kita ambil bagian akhir lalu balik lagi
         const displayItems = activeQueue.slice(-5).reverse(); 
 
         let html = '';
@@ -305,15 +318,21 @@ async function updateMonitor() {
                     </div>`;
             });
         } else {
-            html = `<div class="text-center mt-5 py-5 opacity-25"><h3>ANTREAN KOSONG</h3></div>`;
+            html = `
+                <div class="text-center mt-5 py-5 opacity-25">
+                    <i class="fas fa-check-double fa-5x mb-3" style="color: var(--primary-green)"></i>
+                    <h3>SEMUA OBAT SELESAI</h3>
+                </div>`;
         }
         
         container.innerHTML = html;
+        console.log(`✅ [LOG] Monitor diperbarui. Menampilkan ${displayItems.length} pasien.`);
     } catch (err) {
-        console.error("Gagal ambil data resep:", err);
+        console.error("❌ [LOG] Gagal ambil data:", err);
     }
 }
 
+// Jam & Tanggal
 setInterval(() => {
     const now = new Date();
     document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
@@ -322,21 +341,50 @@ setInterval(() => {
     }).toUpperCase();
 }, 1000);
 
-const pusher = new Pusher('8b7f969aee7f1ab6ea06', { cluster: 'ap1' });
+// --- LOGIKA PUSHER LISTENER ---
+const pusher = new Pusher('8b7f969aee7f1ab6ea06', {
+    cluster: 'ap1'
+});
+
 const channel = pusher.subscribe('antrean-channel');
 
 channel.bind('panggil-event', function(data) {
-    if (isSpeakerActive && data.poli === 'RESEP') {
+    if (isSpeakerActive) {
+        // Hentikan suara TTS yang sedang berjalan agar tidak tumpang tindih
         window.speechSynthesis.cancel();
-        const pesan = `Pasien atas nama ${data.nama.toLowerCase()}. Silakan menuju loket farmasi`;
-        const utterance = new SpeechSynthesisUtterance(pesan);
-        utterance.lang = 'id-ID'; 
-        window.speechSynthesis.speak(utterance);
+
+        // Normalisasi nama poli agar enak didengar
+        const poliNatural = data.poli.toLowerCase()
+            .replace('&', 'dan')
+            .replace('-', ' ')
+            .replace('pelayanan', '');
+
+        // FORMAT PESAN SESUAI PERMINTAAN
+        const pesan = `Pasien atas nama ${data.nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
+        
+        // 1. Definisikan suara bel
+        const bell = new Audio('suara/panggilan.mp3');
+
+        // 2. Jalankan Google TTS HANYA setelah bel selesai berbunyi
+        bell.onended = () => {
+            const utterance = new SpeechSynthesisUtterance(pesan);
+            
+            utterance.lang = 'id-ID'; 
+            utterance.rate = 1.0; 
+            utterance.pitch = 1.0; 
+
+            window.speechSynthesis.speak(utterance);
+        };
+
+        // 3. Putar suara bel terlebih dahulu
+        bell.play().catch(e => console.log("Audio play blocked by browser:", e));
     }
 });
 
+// Update data setiap 5 detik
 setInterval(updateMonitor, 5000);
 updateMonitor();
 </script>
+
 </body>
 </html>
