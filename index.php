@@ -242,6 +242,18 @@
                     <p class="card-title">Pemanggil Pendaftaran</p>
                 </a>
             </div>
+            <div class="col-12 col-md-4">
+                <a href="operator_pendaftaran.php" target="_blank" class="menu-card bg-caller shadow-sm">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-file-person"></i></div>
+                    <p class="card-title">Panel Konfirmasi Kehadiran</p>
+                </a>
+            </div>
+            <div class="col-12 col-md-4">
+                <a href="operator_skrining.php" target="_blank" class="menu-card bg-caller shadow-sm">
+                    <div class="icon-box bg-white shadow-sm"><i class="bi bi-heart-pulse-fill"></i></div>
+                    <p class="card-title">Operator Skrining Pasien</p>
+                </a>
+            </div>
         </div>
     </section>
 

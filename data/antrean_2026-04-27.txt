@@ -1,0 +1,82 @@
+[
+    {
+        "no_antrean": "AC-0001",
+        "poli": "KIA",
+        "dokter": "ASIFATUL CHOIRIYAH",
+        "nama": "DESITA NURAQILA",
+        "jam": "27-04-2026 00:00:00",
+        "umur": "3"
+    },
+    {
+        "no_antrean": "DC-0001",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "ENDAH PUJIATININGSIH",
+        "jam": "27-04-2026 06:13:33",
+        "umur": "40"
+    },
+    {
+        "no_antrean": "DC-0002",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "NOTO SUNARNO",
+        "jam": "27-04-2026 07:05:58",
+        "umur": "69"
+    },
+    {
+        "no_antrean": "DC-0003",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "TANTO SUYATNO",
+        "jam": "27-04-2026 07:08:23",
+        "umur": "76"
+    },
+    {
+        "no_antrean": "DD-0001",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "PAIYEM",
+        "jam": "27-04-2026 07:31:29",
+        "umur": "51"
+    },
+    {
+        "no_antrean": "DC-0004",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "PANI",
+        "jam": "27-04-2026 07:33:59",
+        "umur": "65"
+    },
+    {
+        "no_antrean": "DC-0005",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "HADI MULYONO",
+        "jam": "27-04-2026 07:35:00",
+        "umur": "70"
+    },
+    {
+        "no_antrean": "DC-0006",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "SUKAMI",
+        "jam": "27-04-2026 07:36:15",
+        "umur": "67"
+    },
+    {
+        "no_antrean": "DD-0002",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "WAHYUNINGSIH",
+        "jam": "27-04-2026 07:37:15",
+        "umur": "25"
+    },
+    {
+        "no_antrean": "DD-0003",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "AMMAR ZAQWAN MUSTOFA",
+        "jam": "27-04-2026 07:38:37",
+        "umur": "7"
+    }
+]
