@@ -1,0 +1,24 @@
+No: 0001 | Jam: 07:59:46 | Nama: PARNU | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0002 | Jam: 08:03:17 | Nama: SRI MARYATI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0003 | Jam: 08:05:29 | Nama: TRI SUMANI | Dari: LINTAS KLUSTER - INAP UMUM | Status: Selesai
+No: 0004 | Jam: 08:25:49 | Nama: DEWI PUSPITASARI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0005 | Jam: 08:40:20 | Nama: WARSO KAWIT MULYONO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0006 | Jam: 08:49:17 | Nama: PARNI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0007 | Jam: 09:14:32 | Nama: SERLINA AMANDAWATI | Dari: KIA | Status: Selesai
+No: 0008 | Jam: 09:14:48 | Nama: ADI NUGROHO TAWAKKAL | Dari: KIA | Status: Selesai
+No: 0009 | Jam: 09:21:43 | Nama: NYARWANTO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0010 | Jam: 09:31:33 | Nama: NGATIRAH | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0011 | Jam: 09:44:08 | Nama: IKA ANDAN SARI | Dari: KIA | Status: Selesai
+No: 0012 | Jam: 09:46:11 | Nama: NANIK MUSIYATI | Dari: KIA | Status: Selesai
+No: 0013 | Jam: 09:46:33 | Nama: SUTOPO | Dari: KIA | Status: Selesai
+No: 0014 | Jam: 09:49:25 | Nama: IKE INDRIANI | Dari: KIA | Status: Selesai
+No: 0015 | Jam: 10:13:37 | Nama: TARNI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0016 | Jam: 10:14:23 | Nama: TRI SUMANI | Dari: LINTAS KLUSTER - INAP UMUM | Status: Selesai
+No: 0017 | Jam: 10:16:02 | Nama: EMAWATI | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0018 | Jam: 10:53:36 | Nama: SUYOTO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0019 | Jam: 10:57:01 | Nama: SRIYONO | Dari: KIA | Status: Selesai
+No: 0020 | Jam: 10:58:26 | Nama: SUGENG WAHYUNI | Dari: KIA | Status: Selesai
+No: 0021 | Jam: 11:00:17 | Nama: SUNARSI WARSO RAHARJO | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0022 | Jam: 11:44:43 | Nama: ANSORI | Dari: LINTAS KLUSTER - GAWAT DARURAT | Status: Selesai
+No: 0023 | Jam: 13:04:03 | Nama: OZI IHZA PRADIPTA | Dari: K3 - USIA DEWASA & LANSIA | Status: Selesai
+No: 0024 | Jam: 08:59:32 | Nama: SURANI | Dari: LINTAS KLUSTER - INAP UMUM | Status: Proses

@@ -1,0 +1,42 @@
+[
+    {
+        "no_antrean": "AI-0002",
+        "poli": "LINTAS KLUSTER - INAP UMUM",
+        "dokter": "-",
+        "nama": "SURANI",
+        "jam": "05-05-2026 00:00:00",
+        "umur": "59"
+    },
+    {
+        "no_antrean": "DB-0075",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "ENDAH PUJIATININGSIH",
+        "nama": "0ZI IHZA",
+        "jam": "05-05-2026 12:54:15",
+        "umur": "26"
+    },
+    {
+        "no_antrean": "DA-0022",
+        "poli": "K3 - USIA DEWASA & LANSIA",
+        "dokter": "MAGHFUR ARROZY",
+        "nama": "OZI IHZA PRADIPTA",
+        "jam": "05-05-2026 12:58:21",
+        "umur": "26"
+    },
+    {
+        "no_antrean": "AH-0004",
+        "poli": "LINTAS KLUSTER - GAWAT DARURAT",
+        "dokter": "-",
+        "nama": "SISWANTI",
+        "jam": "05-05-2026 16:18:05",
+        "umur": "41"
+    },
+    {
+        "no_antrean": "AH-0006",
+        "poli": "LINTAS KLUSTER - GAWAT DARURAT",
+        "dokter": "-",
+        "nama": "SAMINU",
+        "jam": "05-05-2026 18:55:30",
+        "umur": "32"
+    }
+]

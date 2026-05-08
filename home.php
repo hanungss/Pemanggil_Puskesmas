@@ -431,15 +431,23 @@ channel.bind('panggil-event', function(data) {
         // Hentikan suara TTS yang sedang berjalan agar tidak tumpang tindih
         window.speechSynthesis.cancel();
 
-        // Normalisasi nama poli agar enak didengar
-        const poliNatural = data.poli.toLowerCase()
-            .replace('&', 'dan')
-            .replace('-', ' ')
-            .replace('pelayanan', '');
+        let pesan = "";
 
-        // FORMAT PESAN SESUAI PERMINTAAN
-        const pesan = `Pasien atas nama ${data.nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
-        
+        // --- LOGIKA PEMBEDA: CEK APAKAH INI PENGUMUMAN KHUSUS ---
+        if (data.no_antrean === "INFO") {
+            // Jika INFO, ambil langsung dari variabel 'pesan' yang dikirim dari coba.php
+            pesan = data.pesan; 
+        } else {
+            // Jika bukan INFO (antrean biasa), gunakan format standar pasien
+            const poliNatural = data.poli.toLowerCase()
+                .replace('&', 'dan')
+                .replace('-', ' ')
+                .replace('pelayanan', '');
+            
+            pesan = `Pasien atas nama ${data.nama.toLowerCase()}. Silakan menuju ${poliNatural}`;
+        }
+        // -------------------------------------------------------
+
         // 1. Definisikan suara bel
         const bell = new Audio('suara/panggilan.mp3');
 
